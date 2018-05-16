@@ -1,0 +1,80 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    font-family: "Century Gothic";
+    background-image: url("images/book_stack_medium.jpeg");
+}
+
+h1{
+    color: #fff;
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+}
+
+.form_registro{
+    width: 98%;
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border-radius: 7px;
+}
+.form_titulo{
+    background: deepskyblue;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 30px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 5px solid crimson;
+}
+
+.contenedor_inputs{
+    padding: 10px 30px; /*Arriba-Abajo: 10, Izq-Der: 30*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input{
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid darkgrey;
+}
+
+.input_48px{
+    width: 48%;
+}
+
+.input_100px{
+    width: 100%;
+}
+
+.BTN_enviar{
+    background: crimson;
+    color: #fff;
+    margin: auto;
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.BTN_enviar:active{
+    tranform: scale(1.05);
+}
+
+.form_sesion{
+    width: 100%;
+    margin: 7px;
+    text-align: center;
+    font-size: 14px;
+}

@@ -1,0 +1,36 @@
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="storage.xsd">
+    
+<user>
+	<name>Erick</name>
+	<last_name>Vargas</last_name>
+	<user_name>eerick1997</user_name>
+	<password>eerick1997977</password>
+	<email>erick_thod@hotmail.com</email>
+	<type>administrator</type>
+	<projects></projects>
+</user>
+
+<user>
+	<name>Jesus</name>
+	<last_name>Diaz</last_name>
+	<user_name>Jkaimorts</user_name>
+	<password>Jkaimorts1234</password>
+	<email>jesuskai@gmail.com</email>
+	<type>administrator</type>
+	<projects>
+		<project> Este es mi primer proyecto</project>
+	</projects>
+</user>
+
+<user>
+	<name>Alberto</name>
+	<last_name>Esquivel</last_name>
+	<user_name>BetoEsquivel</user_name>
+	<password>BEsquivel1234</password>
+	<email>alberto_esquivel@gmail.com</email>
+	<type>administrator</type>
+	<projects></projects>
+</user>
+
+</users>

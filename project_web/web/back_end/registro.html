@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar</title>
+    <link rel="stylesheet" href="css/style_registro.css">
+</head>
+<body>
+    <h1>REGISTRO</h1>
+    <form action="../Servlet_register" method="post" class="form_registro">
+         <h2 class="form_titulo">CREA UNA CUENTA</h2>
+         <div class="contenedor_inputs">
+            <input type="text" name="name" placeholder="Nombre" class="input_48px" required/>
+            <input type="text" name="last_name" placeholder="Apellidos" class="input_48px" required/>
+            <input type="email" name="email" placeholder="Correo" class="input_100px" required/>
+            <input type="text" name="user" placeholder="Usuario" class="input_48px" required/>
+            <input type="password" name="password" placeholder="Contraseña" class="input_48px" required/>
+            <!--select name="tipo">
+                <option value="student">Alumno</option>
+                <option value="teacher">Profesor</option>
+                <option value="administrator">Administrador</option>
+            </select-->
+            <!--input type="password" name="contrasenia" placeholder="Contraseña" class="input_48px" required/-->
+
+            <input type="submit" value="Registrar" class="BTN_enviar"/>
+            <p class="form_sesion">¿Ya estás registrado?  <a href="session.html">Inicia sesión</a> </p>
+         </div>
+    </form>
+</body>
+</html>
