@@ -6,16 +6,18 @@ public class User {
     private String email;
     private String user_name;
     private String password;
+    private String type_user;
     private String projects;
     private String project;
 
     public User(String name, String last_name,String email,
-                String user_name, String password){
+                String user_name, String password,String type_user){
         this.name = name;
         this.last_name = last_name;
         this.email = email;
         this.user_name = user_name;
         this.password = password;
+        this.type_user = type_user;
     }
 
     public String getName() {
@@ -73,6 +75,12 @@ public class User {
     public void setProject(String project) {
         this.project = project;
     }
-    
-    
+
+    public String getType_user() {
+        return type_user;
+    }
+
+    public void setType_user(String type_user) {
+        this.type_user = type_user;
+    }    
 }

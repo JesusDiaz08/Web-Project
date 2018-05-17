@@ -12,4 +12,6 @@ public class OurXML {
     public static final String EMAIL = "email";
     public static final String PROJECTS = "projects";
     public static final String PROJECT = "project";
+    public static final String[] TYPE_USER = {"administrator","teacher","student"};
+    
 }

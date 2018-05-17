@@ -9,6 +9,10 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class LoginValidator {
     
@@ -39,7 +43,9 @@ public class LoginValidator {
                 users_registered.get(user_name).equals(password));
     }
     
-    public boolean isUser(User user){
+    public SimpleEntry isUser(User user){
+        //======>  Single Entry
+        //System.out.println("key: " + pair.getKey() + "    value:" + pair.getValue());
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
@@ -50,14 +56,14 @@ public class LoginValidator {
             for (int i = 0; i < chiildren.size(); i++) {
                 Element node = (Element) chiildren.get(i);
                 if (node.getChildText("email").equals(user.getEmail()) ||    
-                    node.getChildText("user_name").equals(user.getUser_name()) ) {
-                    return true;
+                    node.getChildText("user_name").equals(user.getUser_name()) ){
+                    new SimpleEntry<>("1",node.getAttributeValue("type_user"));
                 }
             }
         } catch (IOException | JDOMException ex) {
             System.out.println(ex.getMessage());
         }
-        return false;
+        return new SimpleEntry<>("0", "Nothing");
     }
     
     public HashMap getUsersFromXML(){
@@ -78,5 +84,27 @@ public class LoginValidator {
             System.out.println(ex.getMessage());
         }
         return users;
+    }
+    
+    public String getTypeUser(String user_name,String password){
+        String type_user = "";
+        SAXBuilder builder = new SAXBuilder();
+        File XML_file = new File(path_XML);
+        try {
+            Document doc = (Document)builder.build(XML_file);
+            Element rootNode = doc.getRootElement(); /*<user></user>*/
+            List chiildren = rootNode.getChildren("user");
+            
+            for (int i = 0; i < chiildren.size(); i++) {
+                Element node = (Element) chiildren.get(i);
+                if (node.getChildText("user_name").equals(user_name) &&
+                    node.getChildText("password").equals(password)) {
+                    return node.getAttributeValue("type_user");
+                }
+            }
+        } catch (IOException | JDOMException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return type_user;
     }
 }

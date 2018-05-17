@@ -1,7 +1,7 @@
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="storage.xsd">
     
-<user>
+<user type_user="administrator">
 	<name>Erick</name>
 	<last_name>Vargas</last_name>
 	<user_name>eerick1997</user_name>
@@ -11,7 +11,7 @@ xsi:noNamespaceSchemaLocation="storage.xsd">
 	<projects></projects>
 </user>
 
-<user>
+<user type_user="administrator">
 	<name>Jesus</name>
 	<last_name>Diaz</last_name>
 	<user_name>Jkaimorts</user_name>
@@ -23,7 +23,7 @@ xsi:noNamespaceSchemaLocation="storage.xsd">
 	</projects>
 </user>
 
-<user>
+<user type_user="administrator">
 	<name>Alberto</name>
 	<last_name>Esquivel</last_name>
 	<user_name>BetoEsquivel</user_name>
