@@ -8,6 +8,10 @@
         <servlet-name>Servlet_register</servlet-name>
         <servlet-class>OurServlets.Servlet_register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Servlet_drop</servlet-name>
+        <servlet-class>OurServlets.Servlet_drop</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Servlet_register</servlet-name>
         <url-pattern>/Servlet_register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_drop</servlet-name>
+        <url-pattern>/Servlet_drop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

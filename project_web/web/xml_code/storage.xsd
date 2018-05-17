@@ -21,6 +21,7 @@
                             </xs:element>
                         </xs:all>
                         <xs:attribute name="type_user" type="xs:string" use="required"/>
+                        <xs:attribute name="id_email" type="xs:string" use="required"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>

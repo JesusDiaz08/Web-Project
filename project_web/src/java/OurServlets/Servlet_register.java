@@ -3,9 +3,7 @@ package OurServlets;
 import static Utilities.OurXML.*;
 import Utilities.User;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.AbstractMap.SimpleEntry;
@@ -118,6 +116,7 @@ public class Servlet_register extends HttpServlet {
         
         element = new Element(USER);
         element.setAttribute("type_user",user.getType_user());
+        element.setAttribute("id_email",user.getEmail());
         element.addContent(new Element(NAME).setText(user.getName()));
         element.addContent(new Element(LAST_NAME).setText(user.getLast_name()));
         element.addContent(new Element(USER_NAME).setText(user.getUser_name()));
