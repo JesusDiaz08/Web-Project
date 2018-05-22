@@ -43,12 +43,8 @@ public class Servlet_register extends HttpServlet {
         try {
             //The file exists
             if (file.exists()) {
-                System.out.println("File exists ");
-                //FileInputStream fileInputStream = new FileInputStream(file);
-                //SAXBuilder saxBuilder = new SAXBuilder();
                 document = saxBuilder.build(file);
                 rootElement = document.getRootElement();
-                //fileInputStream.close();
             } //The file doesn't exists
             else {
                 System.out.println("File doesn't exists");
@@ -61,7 +57,7 @@ public class Servlet_register extends HttpServlet {
             if (!validator.isUser(email,user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);
                 System.out.println("Adding a user data");
-                Element child = setUserDatas(rootElement, user);
+                Element child = setUserData(rootElement, user);
                 rootElement.addContent(child);
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
                 XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
@@ -104,7 +100,7 @@ public class Servlet_register extends HttpServlet {
      * Parameters: Five strings that are the datas of an user
      * Return: An element object that contains infomation about an user
      **/
-    private Element setUserDatas(Element element, User user) throws Exception{
+    private Element setUserData(Element element, User user) throws Exception{
         System.out.println("setUserDatas\n name = [" + user.getName()
                 + "]\n last_name = [" + user.getLast_name()
                 + "]\n user_name = [" + user.getUser_name() 
