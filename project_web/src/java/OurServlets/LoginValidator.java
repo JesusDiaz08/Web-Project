@@ -103,7 +103,7 @@ public class LoginValidator {
         return null;
     }
 
-    public boolean dropUser(String id_email) {
+        public boolean dropUser(String id_email) {
         boolean isDrop=false;
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
@@ -111,13 +111,13 @@ public class LoginValidator {
             Document doc = builder.build(XML_file);
             Element root = doc.getRootElement(); /*<user></user>*/
             
-            List usersXML = root.getChildren("user");
+            List usersXML = root.getChildren(USER);
             Iterator iter = usersXML.iterator();
 
             
             while(iter.hasNext()){
                 Element user = (Element)iter.next();
-                if (user.getAttributeValue("id_email").equals(id_email)) {
+                if (user.getAttributeValue(ATTR_EMAIL).equals(id_email)) {
                     iter.remove();
                     return !isDrop;
                 }
