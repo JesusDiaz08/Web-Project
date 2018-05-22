@@ -31,12 +31,17 @@ public class Servlet_update extends HttpServlet {
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
         
-        String name = "Efraín";
-        String last_name = "Vargas";
-        String email = "vargas.erick030997@gmail.com";
-        String user_name = "eerick1997";
-        String password = "123456";
-        String type_user = "administrator";
+        String id = request.getParameter("id");
+        
+        LoginValidator verify = new LoginValidator(path);
+        
+        
+        
+        Element user = verify.getUser(id);
+        if (user!=null) {        
+            
+            crearformulario(writer,user);
+        }
         Document document = null;
         Element rootElement = null;
         try{
@@ -50,19 +55,41 @@ public class Servlet_update extends HttpServlet {
                 document = new Document();
                 rootElement = new Element(ROOT);
             }
-            LoginValidator validator = new LoginValidator(path);
-            if(!validator.isUser(email, user_name, password)){
-                User user = new User(name, last_name, email, user_name, password, type_user);
-
-                
-                validator.updateUser("erick_thod@hotmail.com", user);
-               
-            }
         } catch(IOException e){
             System.err.println("An IOException has occurred in Servlet_update.doPost " + e);
         } catch(Exception e){
             System.err.println("An Excpetion has occurred Servlet_update.doPost" + e);
         }
     }
-      
+    public static void crearformulario(PrintWriter pw, Element user)
+    {
+            String name = user.getChildText(NAME);
+            String last_name = user.getChildText(LAST_NAME);
+            String email = user.getAttributeValue(ATTR_EMAIL);
+            String user_name = user.getAttributeValue(ATTR_USER_NAME);
+            String password = user.getChildText(PASSWORD);
+            String type_user = user.getAttributeValue(ATTR_TYPE_USER);
+            pw.println("<!DOCTYPE html>");
+            pw.println("<html>");
+            pw.println("<head>");
+            pw.println("<title>UPDATE</title>");
+            pw.println("</head>");
+            pw.println("<body>");
+            pw.println("<form action='Servlet_call_upd' method='POST'> </br>");
+            pw.println("Nombre: <input type='text' value='"+name+"' name='name'/> </br>");
+            pw.println("Apellido: <input type='text' value='"+last_name+"' name='last_name'/> </br>");
+            pw.println("Email: <input type='email' value='"+email+"' name='email'/> </br>");
+            pw.println("Password: <input type='password' value='"+password+"' name='password'/> </br>");
+            pw.println("Username: <input type='text' value='"+user_name+"' name='user'/> </br>");
+            pw.println("Tipo de usuario: <select name=\"type_user\" required value='"+type_user+"'>\n" +
+"                         <option value=\"student\">Alumno</option>\n" +
+"                         <option value=\"teacher\">Profesor</option>\n" +
+"                         <option value=\"administrator\">Administrador</option>\n" +
+"                     </select>");
+            pw.println("<input type='submit' value='Update'/>");
+            pw.println("</form>");
+            pw.println("</body>");
+            pw.println("</html>");
+            
+    }
 }

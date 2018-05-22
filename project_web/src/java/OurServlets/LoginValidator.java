@@ -93,9 +93,9 @@ public class LoginValidator {
             List user_element_list = root_element.getChildren(USER);
             for (int i = 0; i < user_element_list.size(); i++) {
                 Element user_element = (Element) user_element_list.get(i);
-                if (user_element.getChildText(ATTR_EMAIL).equals(id)
+                if (user_element.getAttributeValue(ATTR_EMAIL).equals(id)
                         || // the user_name is the same as the @param so we return an Element
-                        user_element.getChildText(ATTR_USER_NAME).equals(id)) {
+                        user_element.getAttributeValue(ATTR_USER_NAME).equals(id)) {
                     //User found, we return the user
                     return user_element;
                 }

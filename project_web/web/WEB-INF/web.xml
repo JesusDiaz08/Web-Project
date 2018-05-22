@@ -16,10 +16,13 @@
         <servlet-name>Servlet_update</servlet-name>
         <servlet-class>OurServlets.Servlet_update</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>Servlet_Admin</servlet-name>
         <servlet-class>OurServlets.Servlet_Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Servlet_call_upd</servlet-name>
+        <servlet-class>OurServlets.Servlet_call_upd</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
@@ -37,12 +40,14 @@
         <servlet-name>Servlet_Admin</servlet-name>
         <url-pattern>/Servlet_Admin</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Servlet_update</servlet-name>
         <url-pattern>/Servlet_update</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>Servlet_call_upd</servlet-name>
+        <url-pattern>/Servlet_call_upd</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
