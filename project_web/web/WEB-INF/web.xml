@@ -12,6 +12,15 @@
         <servlet-name>Servlet_drop</servlet-name>
         <servlet-class>OurServlets.Servlet_drop</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Servlet_update</servlet-name>
+        <servlet-class>OurServlets.Servlet_update</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>Servlet_Admin</servlet-name>
+        <servlet-class>OurServlets.Servlet_Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -24,6 +33,16 @@
         <servlet-name>Servlet_drop</servlet-name>
         <url-pattern>/Servlet_drop</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_Admin</servlet-name>
+        <url-pattern>/Servlet_Admin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Servlet_update</servlet-name>
+        <url-pattern>/Servlet_update</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
