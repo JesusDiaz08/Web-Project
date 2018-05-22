@@ -3,7 +3,7 @@ package Utilities;
 
 public class OurXML {
     
-    public static final String ROOT = "students";
+    public static final String ROOT = "users";
     public static final String USER = "user";
     public static final String NAME = "name";
     public static final String LAST_NAME = "last_name";

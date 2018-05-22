@@ -3,6 +3,7 @@ package OurServlets;
 import static Utilities.OurXML.*;
 import Utilities.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import org.jdom.Document;
@@ -11,11 +12,13 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import java.util.Iterator;
 import java.util.List;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 
 public class LoginValidator {
 
-    private final String path_XML;
+    private String path_XML;
     
     public LoginValidator(String Path_XML) {
         this.path_XML = Path_XML;
@@ -33,6 +36,7 @@ public class LoginValidator {
      */
 
     public boolean isUser(String email, String user_name, String password) {
+        System.out.println("OurServlets.LoginValidator.isUser() email " + email + " user_name " + user_name + " password " + password);
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
@@ -43,9 +47,9 @@ public class LoginValidator {
 
             for (int i = 0; i < chiildren.size(); i++) {  /*Verify if an user exists*/
                 Element node = (Element) chiildren.get(i);
-                if((node.getAttribute(ATTR_EMAIL).toString().equals(email) ||
-                        node.getAttribute(ATTR_USER_NAME).toString().equals(user_name)) &&
-                        node.getChild(PASSWORD).equals(password))
+                if((node.getAttributeValue(ATTR_EMAIL).equals(email) ||
+                        node.getAttributeValue(ATTR_USER_NAME).equals(user_name)) &&
+                        node.getChildText(PASSWORD).equals(password))
                     
                 return true;    
             }
@@ -57,6 +61,7 @@ public class LoginValidator {
     }
 
     public List getUsersFromXML() {
+        System.out.println("OurServlets.LoginValidator.getUsersFromXML()");
         List user_element_list = null;
         SAXBuilder SAXbuilder = new SAXBuilder();
         File XML_file = new File(path_XML);
@@ -76,6 +81,7 @@ public class LoginValidator {
     }
 
      public Element getUser(String id){
+         System.out.println("OurServlets.LoginValidator.getUser() id: " + id );
         //Instance of a SAXBuilder object
         SAXBuilder SAXbuilder = new SAXBuilder();
         //Making an instance of File object and putting the path of our XML_file
@@ -104,27 +110,58 @@ public class LoginValidator {
     }
 
         public boolean dropUser(String id_email) {
+        System.out.println(" - - - OurServlets.LoginValidator.dropUser() id_email: " + id_email + " - - - ");
         boolean isDrop=false;
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
+            XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+  
             Document doc = builder.build(XML_file);
-            Element root = doc.getRootElement(); /*<user></user>*/
+            Element root = doc.getRootElement(); /*<users></users>*/
             
             List usersXML = root.getChildren(USER);
             Iterator iter = usersXML.iterator();
 
-            
             while(iter.hasNext()){
                 Element user = (Element)iter.next();
                 if (user.getAttributeValue(ATTR_EMAIL).equals(id_email)) {
+                    System.out.println("User exists so we can drop it " + user.getAttributeValue(ATTR_EMAIL));
                     iter.remove();
+                    System.out.println(">>isDrop: " + !isDrop);
+                    xmlOutputter.output(doc, new FileWriter(XML_file));
                     return !isDrop;
                 }
             }
         } catch (IOException | JDOMException ex) {
             System.out.println(ex.getMessage());
         }
+            System.out.println(">>isDrop: " + isDrop);
         return isDrop;
+    }
+        
+    public void updateUser(String id, final Element element){
+        SAXBuilder builder = new SAXBuilder();
+        File XML_file = new File(path_XML);
+        try{
+            XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+            Document doc = builder.build(XML_file);
+            Element root = doc.getRootElement();
+            List usersXML = root.getChildren(USER);
+            for(int  i = 0; i < usersXML.size(); i++){
+                Element user = (Element)usersXML.get(i);
+                if((user.getAttributeValue(ATTR_EMAIL).equals(id) || 
+                        user.getAttributeValue(NAME).equals(id))){
+                    user = element;
+                    xmlOutputter.output(doc, new FileWriter(XML_file));
+                }
+            }
+        } catch(IOException e){
+            System.err.println("An exception has occurred in LoginValidator.fillHashMap file maybe doesn't exists IOException " + e);
+        } catch(JDOMException e){
+            System.err.println("An exception has occurred in LoginValidator.fillHashMap maybe XML is not well conformed or don't valid JDOMException " + e);
+        } catch(Exception e){
+            System.err.println("An exception has occurred in LoginValidator.fillHashMap Exception " + e);
+        }
     }
 }
