@@ -1,36 +1,29 @@
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="storage.xsd">
     
-<user type_user="administrator" id_email="erick_thod@hotmail.com">
+<user type_user="administrator" id_email="erick_thod@hotmail.com" id_user="eerick1997">
 	<name>Erick</name>
 	<last_name>Vargas</last_name>
-	<user_name>eerick1997</user_name>
 	<password>eerick1997977</password>
-	<email>erick_thod@hotmail.com</email>
-	<type>administrator</type>
 	<projects></projects>
 </user>
 
-<user type_user="administrator" id_email="jesuskai@gmail.com">
+<user type_user="administrator" id_email="jesuskai@gmail.com" id_user="Jkaimorts">
 	<name>Jesus</name>
 	<last_name>Diaz</last_name>
-	<user_name>Jkaimorts</user_name>
 	<password>Jkaimorts1234</password>
-	<email>jesuskai@gmail.com</email>
-	<type>administrator</type>
 	<projects>
 		<project> Este es mi primer proyecto</project>
 	</projects>
 </user>
 
-<user type_user="administrator" id_email="alberto_esquivel@gmail.com">
+<user type_user="administrator" id_email="alberto_esquivel@gmail.com" id_user="aesquivelv">
 	<name>Alberto</name>
 	<last_name>Esquivel</last_name>
-	<user_name>BetoEsquivel</user_name>
 	<password>BEsquivel1234</password>
-	<email>alberto_esquivel@gmail.com</email>
-	<type>administrator</type>
-	<projects></projects>
+	<projects>
+		<project>Proyecto 1</project>
+	</projects>
 </user>
 
 </users>

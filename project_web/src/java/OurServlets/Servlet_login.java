@@ -7,42 +7,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static Utilities.OurXML.*;
+import org.jdom.Element;
 
 /**
- * Servlet_session: this class is a Servlet that we use to 
- * redirect a user to another servlet depending of the user type
- * also if the user exists or not
- **/
+ * Servlet_session: this class is a Servlet that we use to redirect a user to
+ * another servlet depending of the user type also if the user exists or not
+ *
+ */
 public class Servlet_login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException{
-        
+            throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");
         path += "\\storage.xml";
-        
+
         //Instance of a class that we use to search a user
-        LoginValidator loginValidator = new LoginValidator(path);
+        LoginValidator login = new LoginValidator(path);
         String user = request.getParameter("usuario");
         String password = request.getParameter("clave");
-        //The user exists
-        if(loginValidator.validateUser(user, password)){
+        
+       if(login.isUser(user,"",password)){
             //We redirect the user to another servlet
             //response.sendRedirect("user");
             System.out.println("Si existe cuenta");
             write.println("<html>");
             write.println("<head>");
-            if (loginValidator.getTypeUser(user,password).equals(TYPE_USER[0])) { /*Administrator*/
+            //The user exist so we can get information about her/his
+            Element element = login.getUser(user);
+            
+            //The user is an administrator
+            if (element.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) {
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin.html'>");
-            }else if(loginValidator.getTypeUser(user,password).equals(TYPE_USER[1])){ /*Teacher*/
+            }
+            //The user is a teacher
+            else if(element.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/teacher.html'>");
-            }else if(loginValidator.getTypeUser(user,password).equals(TYPE_USER[2])){ /*Student*/
+            }
+            //The user is a student
+            else if(element.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/main.html'>");
             }
-            write.println("<script>alert('Welcom'"+user+"!');</script>");
+            //We show an alert dialog 
+            write.println("<script>alert('Welcome: '"+user+"!');</script>");
             write.println("</head>");
             write.println("<body></body>");
             write.println("</html>");
@@ -52,7 +62,7 @@ public class Servlet_login extends HttpServlet {
         else {
             //We redirect the user to another servlet
             //response.sendRedirect("");
-            System.out.println("No existe cuenta");
+            System.out.println("This user hasn't been registered yet ");
             write.println("<html><head><title>User not registered</title></head>");
             write.println("<body>");
             write.println("<center><h2>This user has not been registered yet</h2></center>");

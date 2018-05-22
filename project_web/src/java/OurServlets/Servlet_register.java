@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.AbstractMap.SimpleEntry;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +38,6 @@ public class Servlet_register extends HttpServlet {
         String type_user = request.getParameter("type_user");
         /** BEGIN XML treat**/
         
-        User user = new User(name,last_name,email,user_name,password,type_user);
         Document document = null;
         Element rootElement = null;
         try {
@@ -58,10 +56,10 @@ public class Servlet_register extends HttpServlet {
                 rootElement = new Element(ROOT);
             }
             LoginValidator validator = new LoginValidator(path);
-            SimpleEntry<String,String> is = validator.isUser(user);
             
-            if (is.getKey().equals("0")) { /*User doesn't exist*/
-                is.setValue(user.getType_user()); /*Establish type of user*/
+            
+            if (!validator.isUser(email,user_name,password)) { /*User doesn't exist*/
+                User user = new User(name,last_name,email,user_name,password,type_user);
                 System.out.println("Adding a user data");
                 Element child = setUserDatas(rootElement, user);
                 rootElement.addContent(child);
@@ -115,13 +113,12 @@ public class Servlet_register extends HttpServlet {
                 + "]\n type_user = ["+user.getType_user()+"]");
         
         element = new Element(USER);
-        element.setAttribute("type_user",user.getType_user());
-        element.setAttribute("id_email",user.getEmail());
+        element.setAttribute(ATTR_TYPE_USER,user.getType_user());
+        element.setAttribute(ATTR_EMAIL,user.getEmail());
+        element.setAttribute(ATTR_USER_NAME,user.getUser_name());
         element.addContent(new Element(NAME).setText(user.getName()));
         element.addContent(new Element(LAST_NAME).setText(user.getLast_name()));
-        element.addContent(new Element(USER_NAME).setText(user.getUser_name()));
         element.addContent(new Element(PASSWORD).setText(user.getPassword()));
-        element.addContent(new Element(EMAIL).setText(user.getEmail()));
         element.addContent(new Element(PROJECTS).setText("algo"));
         return element;
     }

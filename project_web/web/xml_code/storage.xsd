@@ -8,10 +8,7 @@
                         <xs:all>
                             <xs:element name="name" type="xs:string"/>
                             <xs:element name="last_name" type="xs:string"/>
-                            <xs:element name="user_name" type="xs:string"/>
                             <xs:element name="password" type="xs:string"/>
-                            <xs:element name="email" type="xs:string"/>
-                            <xs:element name="type" type="xs:string"/>
                             <xs:element name="projects" minOccurs="0">
                                 <xs:complexType mixed="true">
                                     <xs:sequence>
@@ -22,6 +19,7 @@
                         </xs:all>
                         <xs:attribute name="type_user" type="xs:string" use="required"/>
                         <xs:attribute name="id_email" type="xs:string" use="required"/>
+                        <xs:attribute name="id_user" type="xs:string" use="required"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
