@@ -43,9 +43,11 @@ public class LoginValidator {
 
             for (int i = 0; i < chiildren.size(); i++) {  /*Verify if an user exists*/
                 Element node = (Element) chiildren.get(i);
-                return (node.getAttribute(ATTR_EMAIL).toString().equals(email) ||
+                if((node.getAttribute(ATTR_EMAIL).toString().equals(email) ||
                         node.getAttribute(ATTR_USER_NAME).toString().equals(user_name)) &&
-                        node.getChildText(PASSWORD).equals(password);     
+                        node.getChild(PASSWORD).equals(password))
+                    
+                return true;    
             }
             
         } catch (IOException | JDOMException ex) {
