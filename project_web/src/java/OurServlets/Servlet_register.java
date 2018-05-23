@@ -54,7 +54,7 @@ public class Servlet_register extends HttpServlet {
             LoginValidator validator = new LoginValidator(path);
             
             
-            if (!validator.isUser(email,user_name,password)) { /*User doesn't exist*/
+            if (!validator.isUser(user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);
                 System.out.println("Adding a user data");
                 Element child = setUserData(rootElement, user);

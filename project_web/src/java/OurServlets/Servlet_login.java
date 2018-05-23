@@ -30,25 +30,28 @@ public class Servlet_login extends HttpServlet {
         String user = request.getParameter("usuario");
         String password = request.getParameter("clave");
         
-       if(login.isUser(user,"",password)){
+        Element el = login.getUser(user);
+        if(login.isUser(user, password)){
+       //if(el!=null){
             //We redirect the user to another servlet
             //response.sendRedirect("user");
+            Element aUser = login.getUser(user);
             System.out.println("Si existe cuenta");
             write.println("<html>");
             write.println("<head>");
             //The user exist so we can get information about her/his
-            Element element = login.getUser(user);
+            
             
             //The user is an administrator
-            if (element.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) {
+            if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) {
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin.html'>");
             }
             //The user is a teacher
-            else if(element.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
+            else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/teacher.html'>");
             }
             //The user is a student
-            else if(element.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
+            else if(el.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/main.html'>");
             }
             //We show an alert dialog 

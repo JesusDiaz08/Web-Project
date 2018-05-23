@@ -48,6 +48,13 @@ public class Servlet_call_upd extends HttpServlet {
         /** BEGIN XML treat**/
         LoginValidator valid = new LoginValidator(path);
         valid.updateUser(email, usuario);
+        write.println("<html>");
+                write.println("<head>");
+                write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin.html'>");
+                write.println("<script>alert('User registered');</script>");
+                write.println("</head>");
+                write.println("<body></body>");
+                write.println("</html>");
     }
 
 }

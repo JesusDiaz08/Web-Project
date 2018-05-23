@@ -35,8 +35,8 @@ public class LoginValidator {
      * @return boolean
      *
      */
-    public boolean isUser(String email, String user_name, String password) {
-        System.out.println("OurServlets.LoginValidator.isUser() email " + email + " user_name " + user_name + " password " + password);
+    public boolean isUser(String id, String password) {
+        System.out.println("OurServlets.LoginValidator.isUser() email " + id + " password " + password);
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
@@ -48,8 +48,8 @@ public class LoginValidator {
             for (int i = 0; i < chiildren.size(); i++) {
                 /*Verify if an user exists*/
                 Element node = (Element) chiildren.get(i);
-                if ((node.getAttributeValue(ATTR_EMAIL).equals(email)
-                        || node.getAttributeValue(ATTR_USER_NAME).equals(user_name))
+                if ((node.getAttributeValue(ATTR_EMAIL).equals(id)
+                        || node.getAttributeValue(ATTR_USER_NAME).equals(id))
                         && node.getChildText(PASSWORD).equals(password)) {
                     return true;
                 }
