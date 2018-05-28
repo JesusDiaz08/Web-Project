@@ -1,13 +1,116 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <title>Administrator</title>
+        <script type="text/javascript">
+            var xml_http;
+            var content;
+            var dataUser;
+            var users;
+            var URL = getRoot() + "storage.xml";
+            
+            
+            function createXMLHttpRequest() {
+                if (window.ActiveXObject) {
+                    xml_http = new ActiveXObject("Microsoft.XMLHTTP");
+		}else if (window.XMLHttpRequest) { 
+                    xml_http = new XMLHttpRequest();
+                }
+            }
+            
+            function getRoot(){
+                var rootPath = window.location.protocol + "//" + window.location.host + "/";
+                if (window.location.hostname == "localhost")
+                {
+                    var path = window.location.pathname;
+                    if (path.indexOf("/") == 0){
+                        path = path.substring(1);
+                    }
+                    path = path.split("/", 1);
+                    if (path != ""){
+                        rootPath = rootPath + path + "/xml_code/";
+                    }
+                }
+                return rootPath;
+            }
+            
+            function initVariables(){
+                content = document.getElementById("table_body");
+                dataUser = new Array();
+            }
+            
+            function onLoad(){
+                initVariables();
+                createXMLHttpRequest();
+                xml_http.open("POST",URL,true);
+                xml_http.onreadystatechange = function (){
+                    if (xml_http.readyState === 4 && xml_http.status===200) {
+                        if(xml_http.responseXML !== null){
+                            users = xml_http.responseXML.getElementsByTagName("user");
+                            for(i=0; i<users.length;i++){
+                                dataUser[0] = users[i].getAttribute("id_user");
+                                dataUser[1] = xml_http.responseXML.getElementsByTagName("name")[i].firstChild.data;
+                                dataUser[2] = users[i].getAttribute("id_email");
+                                content.innerHTML += "<tr><td>"+dataUser[0]+"</td><td>"
+                                                               +dataUser[1]+"</td><td>"
+                                                               +dataUser[2]+"</td><td>"
+                                                               +users[i].getAttribute("type_user")+"</td>"
+                                                               +"<td><button onclick='dropUser("+"\""+dataUser[2]+"\""+")'>Eliminar</button></td>"
+                                                               +"<td><button onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>";
+                            }
+                        }
+                    }
+                };
+                xml_http.send();
+            }
+            
+            function addUser(){
+                pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');
+            }
+            
+            function editUser(id_user){
+                var parametro = "?id="+id_user;
+                pop_ventana = window.open('Servlet_update'+parametro,'Editar','width=400,height=650');
+            }
+            
+            function dropUser(id_email){
+                var parametro = "?id_email="+id_email;
+                document.location.href='Servlet_drop'+parametro;
+                var list = document.getElementById("table_body");
+                list.removeChild(list.childNodes[id_email]);
+                xmlHttp.onreadystatechange();                
+            }
+        </script>
     </head>
-    <body>
-        <h1>ADMINISTRADOR</h1>
-        <div>Drop a user
+    <body onload="onLoad()">
+        <header>
+            <div align="right">
+                <a href="../session.html" target = "_top">Sign Out</a>
+            </div>
+        </header>
+        <h1 align="center">ADMINISTRADOR</h1>
+        <div align="center">
+            <input type="button" value="Agregar" onclick="addUser();"/>
+            <table border="2">
+                <tbody id="table_body">
+                    <tr>
+                        <th>USUARIO</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                        <th>TIPO</th>
+                        <th colspan="2">ACCION</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        
+        
+        
+        
+       
+        <div>ACCIONES
             <h1>DROP USER</h1>
             <form action="../Servlet_drop" method="post">
                 <input type="text" name="id_email" placeholder="Email" required/>
@@ -18,8 +121,6 @@
                 <input type="text" name="id" placeholder="Email or Username" required/>
                 <input type="submit" value="Update"/>
             </form>
-            
-            <a href="registro.html">REGISTRAR USUARIO</a>
         </div>
     </body>
 </html>

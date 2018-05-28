@@ -24,6 +24,7 @@ public class Servlet_drop extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("I'm on Servlet_drop");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");

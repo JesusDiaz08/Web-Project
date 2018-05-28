@@ -24,6 +24,10 @@
         <servlet-name>Servlet_call_upd</servlet-name>
         <servlet-class>OurServlets.Servlet_call_upd</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyUser</servlet-name>
+        <servlet-class>OurServlets.ModifyUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>Servlet_call_upd</servlet-name>
         <url-pattern>/Servlet_call_upd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyUser</servlet-name>
+        <url-pattern>/ModifyUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

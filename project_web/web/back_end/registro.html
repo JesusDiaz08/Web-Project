@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="css/style_registro.css">
     <script src="verify_register.js"></script>
 </head>
-<body>
+<body onclick="validar()">
     <h1>REGISTRO</h1>
-    <form action="../Servlet_register" method="post" class="form_registro" onsubmit="return validar();">
+    <form action="../Servlet_register" method="post" class="form_registro">
          <h2 class="form_titulo">CREA UNA CUENTA</h2>
          <div class="contenedor_inputs">
             <input type="text" id="name" name="name" placeholder="Nombre" class="input_48px" required/>

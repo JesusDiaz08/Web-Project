@@ -43,16 +43,16 @@ public class Servlet_login extends HttpServlet {
             
             
             //The user is an administrator
-            if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) {
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin.html'>");
+            if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) { /*Administrator*/
+                write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin/admin.html'>");
             }
             //The user is a teacher
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/teacher.html'>");
+                write.println("<meta http-equiv='Refresh' content='1;url=back_end/teacher/teacher.html'>");
             }
             //The user is a student
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/main.html'>");
+                write.println("<meta http-equiv='Refresh' content='1;url=back_end/user/main.html'>");
             }
             //We show an alert dialog 
             write.println("<script>alert('Welcome: '"+user+"!');</script>");

@@ -22,7 +22,7 @@ public class Servlet_update extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
-        
+        System.out.println("I'm on Servlet_Update");
         String path = request.getRealPath("\\xml_code");
         path += "\\storage.xml";
         
@@ -31,7 +31,7 @@ public class Servlet_update extends HttpServlet {
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
         
-        String id = request.getParameter("id");
+        String id = request.getParameter("id"); /*Puede ser correo o usuario*/
         
         LoginValidator verify = new LoginValidator(path);
         

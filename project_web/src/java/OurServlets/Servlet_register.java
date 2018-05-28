@@ -56,7 +56,7 @@ public class Servlet_register extends HttpServlet {
             
             if (!validator.isUser(user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);
-                System.out.println("Adding a user data");
+                System.out.println("Adding an user");
                 Element child = setUserData(rootElement, user);
                 rootElement.addContent(child);
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -65,12 +65,18 @@ public class Servlet_register extends HttpServlet {
                 //xmlOutputter.output(document, System.out);
                 fileOutputStream.flush();
                 fileOutputStream.close();
+                write.println("<!DOCTYPE html>");
                 write.println("<html>");
                 write.println("<head>");
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin.html'>");
-                write.println("<script>alert('User registered');</script>");
+                write.println("<script language='JavaScript'>");
+                write.println("function refreshParent() {");
+                write.println("window.opener.location.href = window.opener.location.href;");
+                write.println("window.close();}");
+                write.println("refreshParent();");
+                write.println("</script>");
                 write.println("</head>");
-                write.println("<body></body>");
+                write.println("<body>"); 
+                write.println("</body>");
                 write.println("</html>");
                 
             }else{
