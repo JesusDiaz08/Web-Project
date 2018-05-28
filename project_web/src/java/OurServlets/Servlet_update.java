@@ -20,7 +20,7 @@ import org.jdom.output.XMLOutputter;
 public class Servlet_update extends HttpServlet {
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
         System.out.println("I'm on Servlet_Update");
         String path = request.getRealPath("\\xml_code");

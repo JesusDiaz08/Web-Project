@@ -42,7 +42,7 @@
             function onLoad(){
                 initVariables();
                 createXMLHttpRequest();
-                xml_http.open("POST",URL,true);
+                xml_http.open("GET",URL,true);
                 xml_http.onreadystatechange = function (){
                     if (xml_http.readyState === 4 && xml_http.status===200) {
                         if(xml_http.responseXML !== null){
@@ -70,12 +70,12 @@
             
             function editUser(id_user){
                 var parametro = "?id="+id_user;
-                pop_ventana = window.open('Servlet_update'+parametro,'Editar','width=400,height=650');
+                pop_ventana = window.open('../Servlet_update'+parametro,'Editar','width=400,height=650');
             }
             
             function dropUser(id_email){
                 var parametro = "?id_email="+id_email;
-                document.location.href='Servlet_drop'+parametro;
+                document.location.href='../Servlet_drop'+parametro;
                 var list = document.getElementById("table_body");
                 list.removeChild(list.childNodes[id_email]);
                 xmlHttp.onreadystatechange();                

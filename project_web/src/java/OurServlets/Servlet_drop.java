@@ -22,7 +22,7 @@ public class Servlet_drop extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("I'm on Servlet_drop");
         response.setContentType("text/html;charset=UTF-8");
