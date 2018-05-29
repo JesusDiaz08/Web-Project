@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static Utilities.OurXML.*;
+import javax.servlet.http.HttpSession;
 import org.jdom.Element;
 
 /**
@@ -19,7 +20,8 @@ public class Servlet_login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");
@@ -44,6 +46,7 @@ public class Servlet_login extends HttpServlet {
             
             //The user is an administrator
             if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) { /*Administrator*/
+                
                 write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin/admin.html'>");
             }
             //The user is a teacher
@@ -73,6 +76,7 @@ public class Servlet_login extends HttpServlet {
             write.println("</body></html>");
             write.close();
         }
+        
     }
 
 }

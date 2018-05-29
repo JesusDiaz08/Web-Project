@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Administrator</title>
+        <link rel="stylesheet" href="css/style_admin.css">
         <script type="text/javascript">
             var xml_http;
             var content;
@@ -55,11 +56,13 @@
                                                                +dataUser[1]+"</td><td>"
                                                                +dataUser[2]+"</td><td>"
                                                                +users[i].getAttribute("type_user")+"</td>"
-                                                               +"<td><button onclick='dropUser("+"\""+dataUser[2]+"\""+")'>Eliminar</button></td>"
-                                                               +"<td><button onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>";
+                                                               +"<td><button class='button b1' onclick='dropUser("+"\""+dataUser[2]+"\""+")'>Eliminar</button></td>"
+                                                               +"<td><button class='button b1' onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>";
+                                                       
                             }
                         }
                     }
+                    
                 };
                 xml_http.send();
             }
@@ -80,19 +83,26 @@
                 list.removeChild(list.childNodes[id_email]);
                 xmlHttp.onreadystatechange();                
             }
+            
         </script>
+        
     </head>
     <body onload="onLoad()">
         <header>
             <div align="right">
-                <a href="../session.html" target = "_top">Sign Out</a>
+                
+                <a href="../back_end/session.html" target = "_top">Sign Out</a>
             </div>
         </header>
         <h1 align="center">ADMINISTRADOR</h1>
         <div align="center">
-            <input type="button" value="Agregar" onclick="addUser();"/>
+            
+            <input class="button b1" type="button" value="Agregar" onclick="addUser();"/>
+            <br/>
+            <br/>
+            <div class="datagrid">
             <table border="2">
-                <tbody id="table_body">
+                <thead>
                     <tr>
                         <th>USUARIO</th>
                         <th>NOMBRE</th>
@@ -100,8 +110,13 @@
                         <th>TIPO</th>
                         <th colspan="2">ACCION</th>
                     </tr>
+                </thead>
+                <tbody id="table_body">
+                    <tr>
+                    </tr>
                 </tbody>
             </table>
+            </div>
         </div>
         
         
