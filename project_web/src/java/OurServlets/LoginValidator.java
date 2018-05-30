@@ -3,6 +3,7 @@ package OurServlets;
 import static Utilities.OurXML.*;
 import Utilities.User;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.jdom.Document;
@@ -112,9 +113,7 @@ public class LoginValidator {
         boolean isDrop = false;
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 
             Document doc = builder.build(XML_file);
@@ -130,18 +129,12 @@ public class LoginValidator {
                     System.out.println("User exists so we can drop it " + user.getAttributeValue(ATTR_EMAIL));
                     iter.remove();
                     System.out.println(">>isDrop: " + !isDrop);
-                    xmlOutputter.output(doc, fileWriter);
+                    xmlOutputter.output(doc, new FileWriter(XML_file));
                     return !isDrop;
                 }
             }
         } catch (IOException | JDOMException ex) {
             System.out.println(ex.getMessage());
-        } finally {
-            try{
-                fileWriter.close();
-            } catch(Exception e){
-                System.err.println("dropUser Exception" + e);
-            }
         }
         System.out.println(">>isDrop: " + isDrop);
         return isDrop;
@@ -152,10 +145,7 @@ public class LoginValidator {
                 + " user " + user);
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
-        FileWriter fileWriter = null;
         try {
-         
-            fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
             Document doc = builder.build(XML_file);
             Element root = doc.getRootElement();
@@ -182,7 +172,7 @@ public class LoginValidator {
                     element_last_name.setText(user.getLast_name());
                     Element element_password = element.getChild(PASSWORD);
                     element_password.setText(user.getPassword());
-                    xmlOutputter.output(doc, fileWriter);
+                    xmlOutputter.output(doc, new FileOutputStream(XML_file));
                 }
 
             }
@@ -192,12 +182,6 @@ public class LoginValidator {
             System.err.println("An exception has occurred in LoginValidator.updateUser maybe XML is not well conformed or don't valid JDOMException " + e);
         } catch (Exception e) {
             System.err.println("An exception has occurred in LoginValidator.updateUser Exception " + e);
-        } finally {
-            try{
-                fileWriter.close();
-            } catch(Exception e){
-                System.err.println("update User Exception: " + e);
-            }
         }
     }
 
