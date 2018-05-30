@@ -1,11 +1,10 @@
 package OurServlets;
 
 import static Utilities.OurXML.*;
-import Utilities.*;
+import Utilities.User;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -13,7 +12,6 @@ import org.jdom.input.SAXBuilder;
 import java.util.Iterator;
 import java.util.List;
 import org.jdom.Attribute;
-import org.jdom.Namespace;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
@@ -116,6 +114,7 @@ public class LoginValidator {
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
+            FileWriter fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 
             Document doc = builder.build(XML_file);
@@ -131,10 +130,11 @@ public class LoginValidator {
                     System.out.println("User exists so we can drop it " + user.getAttributeValue(ATTR_EMAIL));
                     iter.remove();
                     System.out.println(">>isDrop: " + !isDrop);
-                    xmlOutputter.output(doc, new FileWriter(XML_file));
+                    xmlOutputter.output(doc, fileWriter);
                     return !isDrop;
                 }
             }
+            fileWriter.close();
         } catch (IOException | JDOMException ex) {
             System.out.println(ex.getMessage());
         }
@@ -148,7 +148,8 @@ public class LoginValidator {
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
         try {
-            System.out.println("Try");
+         
+            FileWriter fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
             Document doc = builder.build(XML_file);
             Element root = doc.getRootElement();
@@ -175,10 +176,11 @@ public class LoginValidator {
                     element_last_name.setText(user.getLast_name());
                     Element element_password = element.getChild(PASSWORD);
                     element_password.setText(user.getPassword());
-                    xmlOutputter.output(doc, new FileWriter(XML_file));
+                    xmlOutputter.output(doc, fileWriter);
                 }
 
             }
+            fileWriter.close();
         } catch (IOException e) {
             System.err.println("An exception has occurred in LoginValidator.updateUser file maybe doesn't exists IOException " + e);
         } catch (JDOMException e) {
