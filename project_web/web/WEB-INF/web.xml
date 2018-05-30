@@ -40,6 +40,14 @@
         <servlet-name>Frame_Left</servlet-name>
         <servlet-class>OurServlets.Frame_Left</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Teacher</servlet-name>
+        <servlet-class>OurServlets.Teacher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>User</servlet-name>
+        <servlet-class>OurServlets.User</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>Frame_Left</servlet-name>
         <url-pattern>/Frame_Left</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Teacher</servlet-name>
+        <url-pattern>/Teacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/User</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

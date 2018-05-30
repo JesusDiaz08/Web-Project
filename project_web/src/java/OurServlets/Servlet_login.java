@@ -18,10 +18,10 @@ import org.jdom.Element;
 public class Servlet_login extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        System.out.println("si entra al servlet-login");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");
@@ -43,30 +43,20 @@ public class Servlet_login extends HttpServlet {
             //response.sendRedirect("user");
             Element aUser = login.getUser(user);
             System.out.println("Si existe cuenta");
-            write.println("<html>");
-            write.println("<head>");
             //The user exist so we can get information about her/his
-            
-            
+
             //The user is an administrator
             if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) { /*Administrator*/
-                
                 response.sendRedirect("Administrador");
             }
             //The user is a teacher
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/teacher/teacher.html'>");
+                response.sendRedirect("Teacher");
             }
             //The user is a student
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/user/main.html'>");
+                response.sendRedirect("User");
             }
-            //We show an alert dialog 
-            write.println("<script>alert('Welcome: '"+user+"!');</script>");
-            write.println("</head>");
-            write.println("<body></body>");
-            write.println("</html>");
-            write.close();
         } 
         //The user doesn't exists
         else {

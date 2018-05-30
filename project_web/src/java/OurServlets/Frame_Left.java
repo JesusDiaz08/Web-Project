@@ -25,11 +25,11 @@ public class Frame_Left extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
+            out.println("<head>");  
             out.println("<title>Servlet Servlet1</title>");            
             out.println("</head>");
             out.println("<body>");
-
+            
             if(num_content != 0){
                 for(int i=0;i<num_content;i++){
                  out.println("<a href='"+request.getParameter("href"+i)+"' target='contenidos'> "+request.getParameter("content"+i)+" </a>");

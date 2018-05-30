@@ -1,136 +1,116 @@
-out.println("<!DOCTYPE html>");
-out.println("<html>");
-    out.println("<head>");
-        out.println("<title>Administrator</title>");
-        out.println("<link rel="stylesheet" href="css/style_admin.css">");
-        out.println("<script type="text/javascript">");
-            out.println("var xml_http;");
-            out.println("var content;");
-            out.println("var dataUser;");
-            out.println("var users;");
-            out.println("var URL = getRoot() + 'storage.xml';");
-            
-            
-            out.println("function createXMLHttpRequest() {");
-                out.println("if (window.ActiveXObject) {");
-                    out.println("xml_http = new ActiveXObject('Microsoft.XMLHTTP');");
-		out.println("}else if (window.XMLHttpRequest) { ");
-                    out.println("xml_http = new XMLHttpRequest();");
-                out.println("}");
-            out.println("}");
-            
-            out.println("function getRoot(){");
-                out.println("var rootPath = window.location.protocol + '//' + window.location.host + '/';");
-                out.println("if (window.location.hostname == 'localhost')");
-                out.println("{");
-                    out.println("var path = window.location.pathname;");
-                    out.println("if (path.indexOf('/') == 0){");
-                        out.println("path = path.substring(1);");
-                    out.println("}");
-                    out.println("path = path.split('/', 1);");
-                    out.println("if (path != ''){");
-                        out.println("rootPath = rootPath + path + '/xml_code/';");
-                    out.println("}");
-                out.println("}");
-                out.println('return rootPath;');
-            out.println("}");
-            
-            out.println("function initVariables(){");
-                out.println("content = document.getElementById('table_body');");
-                out.println("dataUser = new Array();");
-            out.println("}");
-            
-            out.println("function onLoad(){");
-                out.println("initVariables();");
-                out.println("createXMLHttpRequest();");
-                out.println("xml_http.open('GET',URL,true);");
-                out.println("xml_http.onreadystatechange = function (){");
-                    out.println("if (xml_http.readyState === 4 && xml_http.status===200) {");
-                        out.println("if(xml_http.responseXML !== null){");
-                            out.println("users = xml_http.responseXML.getElementsByTagName('user');");
-                            out.println("for(i=0; i<users.length;i++){");
-                                out.println("dataUser[0] = users[i].getAttribute('id_user');");
-                                out.println("dataUser[1] = xml_http.responseXML.getElementsByTagName('name')[i].firstChild.data;");
-                                out.println("dataUser[2] = users[i].getAttribute('id_email');");
-                                out.println("content.innerHTML += '<tr><td>'+dataUser[0]+'</td><td>'");
-                                                               out.println("+dataUser[1]+'</td><td>'");
-                                                               out.println("+dataUser[2]+'</td><td>'");
-                                                               out.println("+users[i].getAttribute('type_user')+'</td>'");
-                                                               out.println("+'<td><button class='button b1' onclick='dropUser('+'\''+dataUser[2]+'\''+')'>Eliminar</button></td>'");
-                                                               out.println("+'<td><button class='button b1' onclick='editUser(''+'\''+dataUser[2]+'\''+')'>Editar</button></td></tr>';");
-                                                       
-                            out.println("}");
-                        out.println("}");
-                    out.println("}");
-                    
-                out.println("};");
-                out.println("xml_http.send();");
-            out.println("}");
-            
-            out.println("function addUser(){");
-                out.println("pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');");
-            out.println("}");
-            
-            out.println("function editUser(id_user){");
-                out.println("var parametro = '?id='+id_user;");
-                out.println("pop_ventana = window.open('../Servlet_update'+parametro,'Editar','width=400,height=650');");
-            out.println("}");
-            
-            out.println("function dropUser(id_email){");
-                out.println("var parametro = '?id_email='+id_email;");
-                out.println("document.location.href='../Servlet_drop'+parametro;'");
-                out.println("var list = document.getElementById('table_body');");
-                out.println("list.removeChild(list.childNodes[id_email]);");
-                out.println("xmlHttp.onreadystatechange();                ");
-            out.println("}");
-            
-        out.println("</script>");
-        
-    out.println("</head>");
-    out.println("<body onload='onLoad()'>");
-        out.println("<header>");
-            out.println("<div align='right'>");
-                
-                out.println("<a href='../back_end/session.html' target = '_top'>Sign Out</a>");
-            out.println("</div>");
-        out.println("</header>");
-        out.println("<h1 align='center'>ADMINISTRADOR</h1>");
-        out.println("<div align='center'>");
-            
-            out.println("<input class='button b1' type='button' value='Agregar' onclick='addUser();'/>");
-            out.println("<br/>");
-            out.println("<br/>");
-            out.println("<div class='datagrid'>");
-            out.println("<table border='2'>");
-                out.println("<thead>");
-                    out.println("<tr>");
-                        out.println("<th>USUARIO</th>");
-                        out.println("<th>NOMBRE</th>");
-                        out.println("<th>EMAIL</th>");
-                        out.println("<th>TIPO</th>");
-                        out.println("<th colspan='2'>ACCION</th>");
-                    out.println("</tr>");
-                out.println("</thead>");
-                out.println("<tbody id='table_body'>");
-                    out.println("<tr>");
-                    out.println("</tr>");
-                out.println("</tbody>");
-            out.println("</table>");
-            out.println("</div>");
-        out.println("</div>");
-        
-        
-        
-        
-        
-        
-       
-        out.println("<div>ACCIONES");
-            out.println("<h1>DROP USER</h1>");
-            out.println("<form action='../Servlet_drop' method='post'>");
-                out.println("<input type='text' name='id_email' placeholder='Email' required/>");
-                out.println("<input type='submit' value='Drop'/>");
-            out.println("</form>");
-        out.println("</div>");
-    out.println("</body>");
-out.println("</html>");
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Administrator</title>
+        <link rel="stylesheet" href="css/style_admin.css">
+        <script type="text/javascript">
+            var xml_http;
+            var content;
+            var dataUser;
+            var users;
+            var URL = getRoot() + "storage.xml";
+            function createXMLHttpRequest() {
+                if (window.ActiveXObject) {
+                    xml_http = new ActiveXObject("Microsoft.XMLHTTP");
+				}else if (window.XMLHttpRequest) { 
+                    xml_http = new XMLHttpRequest();
+                }
+            }
+            function getRoot(){
+                var rootPath = window.location.protocol + "//" + window.location.host + "/";
+                if (window.location.hostname == "localhost")
+                {
+                    var path = window.location.pathname;
+                    if (path.indexOf("/") == 0){
+                        path = path.substring(1);
+                    }
+                    path = path.split("/", 1);
+                    if (path != ""){
+                        rootPath = rootPath + path + "/xml_code/";
+                    }
+                }
+                return rootPath;
+            }
+             function initVariables(){
+                content = document.getElementById("table_body");
+                dataUser = new Array();
+            }
+            function onLoad(){
+                initVariables();
+                createXMLHttpRequest();
+                xml_http.open("GET",URL,true);
+                xml_http.onreadystatechange = function (){
+                    if (xml_http.readyState === 4 && xml_http.status===200) {
+                        if(xml_http.responseXML !== null){
+                            users = xml_http.responseXML.getElementsByTagName("user");
+                            for(i=0; i<users.length;i++){
+                                dataUser[0] = users[i].getAttribute("id_user");
+                                dataUser[1] = xml_http.responseXML.getElementsByTagName("name")[i].firstChild.data;
+                                dataUser[2] = users[i].getAttribute("id_email");
+                                content.innerHTML += "<tr><td>"+dataUser[0]+"</td><td>"
+                                                               +dataUser[1]+"</td><td>"
+                                                               +dataUser[2]+"</td><td>"
+                                                               +users[i].getAttribute("type_user")+"</td>"
+                                                               +"<td><button class='button b1' onclick='dropUser("+"\""+dataUser[2]+"\""+")'>Eliminar</button></td>"
+                                                               +"<td><button class='button b1' onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>";
+                            }
+                        }
+                    }
+                };
+                xml_http.send();
+            }
+            function addUser(){
+                pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');
+            }
+            function editUser(id_user){
+                var parametro = "?id="+id_user;
+                pop_ventana = window.open('../Servlet_update'+parametro,'Editar','width=400,height=650');
+            }
+            function dropUser(id_email){
+                var parametro = "?id_email="+id_email;
+                document.location.href='../Servlet_drop'+parametro;
+                var list = document.getElementById("table_body");
+                list.removeChild(list.childNodes[id_email]);
+                xmlHttp.onreadystatechange();                
+            }
+        </script>
+        </head>
+    <body onload="onLoad()">
+        <header>
+            <div align="right">
+            	 <a href="../back_end/session.html" target = "_top">Sign Out</a>
+            </div>
+        </header>
+        <h1 align="center">ADMINISTRADOR</h1>
+        <div align="center">
+        	<input class="button b1" type="button" value="Agregar" onclick="addUser();"/>
+            <br/>
+            <br/>
+            <div class="datagrid">
+            <table border="2">
+                <thead>
+                    <tr>
+                        <th>USUARIO</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                        <th>TIPO</th>
+                        <th colspan="2">ACCION</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+         <div>ACCIONES
+            <h1>DROP USER</h1>
+            <form action="../Servlet_drop" method="post">
+                <input type="text" name="id_email" placeholder="Email" required/>
+                <input type="submit" value="Drop"/>
+            </form>
+        </div>
+    </body>
+</html>
+
