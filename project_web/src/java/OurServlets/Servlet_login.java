@@ -55,7 +55,7 @@ public class Servlet_login extends HttpServlet {
             }
             //The user is a student
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(STUDENT)){ /*Student*/
-                response.sendRedirect("User");
+                response.sendRedirect("Student");
             }
         } 
         //The user doesn't exists

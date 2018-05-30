@@ -32,7 +32,7 @@ public class Frame_Rigth extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<div align='right'><nav>");
-            out.println("<a href='back_end/session.html' target = '_top'> SIGN OUT </a>");
+            out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
             out.println("</nav></div>");
             out.println("<h1>");
             out.println("Bienvenido "+tipoUser+" : "+ userName);

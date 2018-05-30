@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author kaimo
  */
-public class User extends HttpServlet {
+public class Student extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *

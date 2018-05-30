@@ -45,8 +45,8 @@
         <servlet-class>OurServlets.Teacher</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>User</servlet-name>
-        <servlet-class>OurServlets.User</servlet-class>
+        <servlet-name>Student</servlet-name>
+        <servlet-class>OurServlets.Student</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
@@ -93,8 +93,8 @@
         <url-pattern>/Teacher</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>User</servlet-name>
-        <url-pattern>/User</url-pattern>
+        <servlet-name>Student</servlet-name>
+        <url-pattern>/Student</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
