@@ -64,7 +64,6 @@ public class LoginValidator {
         List user_element_list = null;
         SAXBuilder SAXbuilder = new SAXBuilder();
         File XML_file = new File(path_XML);
-
         try {
             Document document = SAXbuilder.build(XML_file);
             Element root_element = document.getRootElement();
@@ -113,8 +112,9 @@ public class LoginValidator {
         boolean isDrop = false;
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
+        FileWriter fileWriter = null;
         try {
-            FileWriter fileWriter = new FileWriter(XML_file);
+            fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 
             Document doc = builder.build(XML_file);
@@ -134,9 +134,14 @@ public class LoginValidator {
                     return !isDrop;
                 }
             }
-            fileWriter.close();
         } catch (IOException | JDOMException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            try{
+                fileWriter.close();
+            } catch(Exception e){
+                System.err.println("dropUser Exception" + e);
+            }
         }
         System.out.println(">>isDrop: " + isDrop);
         return isDrop;
@@ -147,9 +152,10 @@ public class LoginValidator {
                 + " user " + user);
         SAXBuilder builder = new SAXBuilder();
         File XML_file = new File(path_XML);
+        FileWriter fileWriter = null;
         try {
          
-            FileWriter fileWriter = new FileWriter(XML_file);
+            fileWriter = new FileWriter(XML_file);
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
             Document doc = builder.build(XML_file);
             Element root = doc.getRootElement();
@@ -180,13 +186,18 @@ public class LoginValidator {
                 }
 
             }
-            fileWriter.close();
         } catch (IOException e) {
             System.err.println("An exception has occurred in LoginValidator.updateUser file maybe doesn't exists IOException " + e);
         } catch (JDOMException e) {
             System.err.println("An exception has occurred in LoginValidator.updateUser maybe XML is not well conformed or don't valid JDOMException " + e);
         } catch (Exception e) {
             System.err.println("An exception has occurred in LoginValidator.updateUser Exception " + e);
+        } finally {
+            try{
+                fileWriter.close();
+            } catch(Exception e){
+                System.err.println("update User Exception: " + e);
+            }
         }
     }
 
