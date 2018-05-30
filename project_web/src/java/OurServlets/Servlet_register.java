@@ -26,6 +26,11 @@ public class Servlet_register extends HttpServlet {
         path += "\\storage.xml";
         //System.out.println(" ->-> "+path);
         
+        if (path.contains("\\build\\"))
+            path = path.replace("\\build\\","\\");
+        
+        System.out.println("--->>"+path);
+
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();
         response.setContentType("text/html;charset=UTF-8");
@@ -72,6 +77,7 @@ public class Servlet_register extends HttpServlet {
                 write.println("function refreshParent() {");
                 write.println("window.opener.location.href = window.opener.location.href;");
                 write.println("window.close();}");
+                write.println("alert('"+path+"');");
                 write.println("refreshParent();");
                 write.println("</script>");
                 write.println("</head>");
