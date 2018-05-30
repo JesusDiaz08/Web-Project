@@ -28,6 +28,18 @@
         <servlet-name>ModifyUser</servlet-name>
         <servlet-class>OurServlets.ModifyUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Administrador</servlet-name>
+        <servlet-class>OurServlets.Administrador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Frame_Rigth</servlet-name>
+        <servlet-class>OurServlets.Frame_Rigth</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Frame_Left</servlet-name>
+        <servlet-class>OurServlets.Frame_Left</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>ModifyUser</servlet-name>
         <url-pattern>/ModifyUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Administrador</servlet-name>
+        <url-pattern>/Administrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Frame_Rigth</servlet-name>
+        <url-pattern>/Frame_Rigth</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Frame_Left</servlet-name>
+        <url-pattern>/Frame_Left</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

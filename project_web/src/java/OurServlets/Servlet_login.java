@@ -32,6 +32,10 @@ public class Servlet_login extends HttpServlet {
         String user = request.getParameter("usuario");
         String password = request.getParameter("clave");
         
+        /*Recuperamos los atributos para la sesión a abrir*/
+        HttpSession session_usuario = request.getSession();
+        session_usuario.setAttribute("attr_user",user);       
+        
         Element el = login.getUser(user);
         if(login.isUser(user, password)){
        //if(el!=null){
@@ -47,7 +51,7 @@ public class Servlet_login extends HttpServlet {
             //The user is an administrator
             if (el.getAttributeValue(ATTR_TYPE_USER).equals(ADMINISTRATOR)) { /*Administrator*/
                 
-                write.println("<meta http-equiv='Refresh' content='1;url=back_end/admin/admin.html'>");
+                response.sendRedirect("Administrador");
             }
             //The user is a teacher
             else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
