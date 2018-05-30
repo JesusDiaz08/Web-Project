@@ -34,17 +34,5 @@
     <password>123edc</password>
     <projects>algo</projects>
   </user>
-  <user type_user="student" id_email="oswardo@hotmail.com" id_user="Oswi">
-    <name>Oswaldo</name>
-    <last_name>Mercado</last_name>
-    <password>123edc</password>
-    <projects>algo</projects>
-  </user>
-  <user type_user="teacher" id_email="rafa@hotmail.com" id_user="Rafita">
-    <name>Rafael</name>
-    <last_name>Garcia</last_name>
-    <password>rafa23</password>
-    <projects>algo</projects>
-  </user>
 </users>
 

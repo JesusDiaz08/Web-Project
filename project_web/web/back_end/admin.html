@@ -8,7 +8,7 @@
             var content;
             var dataUser;
             var users;
-            var URL = getRoot() + "storage.xml";
+            var URL = getRoot();// + "storage.xml";
             function createXMLHttpRequest() {
                 if (window.ActiveXObject) {
                     xml_http = new ActiveXObject("Microsoft.XMLHTTP");
@@ -26,10 +26,16 @@
                     }
                     path = path.split("/", 1);
                     if (path != ""){
-                        rootPath = rootPath + path + "/xml_code/";
+                        rootPath = rootPath + path; //+ "/xml_code/";
+                        
                     }
                 }
-                return rootPath;
+                
+                if(rootPath.includes("/build/"))
+                    rootPath = rootPath.replace("/build/","/");
+                
+                rootPath += "/xml_code/";
+                return 'http://localhost:8080/project_web/xml_code/storage.xml';
             }
              function initVariables(){
                 content = document.getElementById("table_body");
@@ -38,6 +44,7 @@
             function onLoad(){
                 initVariables();
                 createXMLHttpRequest();
+                alert(URL);
                 xml_http.open("GET",URL,true);
                 xml_http.onreadystatechange = function (){
                     if (xml_http.readyState === 4 && xml_http.status===200) {
