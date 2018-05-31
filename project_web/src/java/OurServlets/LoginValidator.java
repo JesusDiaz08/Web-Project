@@ -73,6 +73,7 @@ public class LoginValidator {
             Document document = SAXbuilder.build(XML_file);
             Element root_element = document.getRootElement();
             user_element_list = root_element.getChildren(USER);
+            
         } catch (IOException e) {
             System.err.println("An exception has occurred in LoginValidator.getUsersFromXML file maybe doesn't exists IOException " + e);
         } catch (JDOMException e) {
