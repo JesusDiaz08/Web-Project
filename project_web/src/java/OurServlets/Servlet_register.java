@@ -24,13 +24,13 @@ public class Servlet_register extends HttpServlet {
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");
         path += "\\storage.xml";
-        
+        if(path.contains("\\build\\"))
+            path = path.replace("\\build\\", "\\");
         System.out.println("--->>"+path);
 
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();
         response.setContentType("text/html;charset=UTF-8");
-
         String name = request.getParameter("name");
         String last_name = request.getParameter("last_name");
         String email = request.getParameter("email");
@@ -54,18 +54,15 @@ public class Servlet_register extends HttpServlet {
             }
             LoginValidator validator = new LoginValidator(path);
             
-            
             if (!validator.isUser(user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);
                 System.out.println("Adding an user");
                 Element child = setUserData(rootElement, user);
                 rootElement.addContent(child);
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
+
                 XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
-                xmlOutputter.output(document, fileOutputStream);
+                xmlOutputter.output(document, new FileOutputStream(file));
                 //xmlOutputter.output(document, System.out);
-                fileOutputStream.flush();
-                fileOutputStream.close();
                 write.println("<!DOCTYPE html>");
                 write.println("<html>");
                 write.println("<head>");
