@@ -59,7 +59,8 @@
                                                                +dataUser[2]+"</td><td>"
                                                                +users[i].getAttribute("type_user")+"</td>"
                                                                +"<td><button class='button b1' onclick='dropUser("+"\""+dataUser[2]+"\""+")'>Eliminar</button></td>"
-                                                               +"<td><button class='button b1' onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>";
+                                                               +"<td><button class='button b1' onclick='editUser("+"\""+dataUser[2]+"\""+")'>Editar</button></td></tr>"
+                                                               +"<td><button class='button b1' onclick='joinGroup("+"\""+dataUser[2]+"\""+")'>Agregar a grupo</button></td></tr>";
                             }
                         }
                     }
@@ -79,6 +80,10 @@
                 var list = document.getElementById("table_body");
                 list.removeChild(list.childNodes[id_email]);
                 xmlHttp.onreadystatechange();                
+            }
+            function joinGroup(id){
+                var parametro = "?id="+id;
+                pop_ventana = window.open('../Servlet_joingGroup'+parametro,'Agregar','width=400,height=650');
             }
         </script>
         </head>

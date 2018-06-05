@@ -19,7 +19,13 @@ import org.jdom.output.XMLOutputter;
 public class LoginValidator {
 
     private String path_XML;
-
+    private String path_XML_gpo;
+    
+    /**
+     * Description: Constructor of LoginValidator Class
+     *
+     * @param path_XML 
+     */
     public LoginValidator(String path_XML) {
         this.path_XML = path_XML;
         
@@ -28,9 +34,26 @@ public class LoginValidator {
         
         System.out.println("LoginValidator\n->" + path_XML);
     }
-
+    
+    
     /**
-     * This function search a user and verify if the password is the correct.
+     * Description: Constructor of LoginValidator Class
+     *
+     * @param path_XML_gpo 
+     * @param gpo
+     */
+    public LoginValidator(String gpo,String path_XML_gpo) {  /*Get all whole data of groups.xml*/
+        this.path_XML_gpo = path_XML_gpo;
+        
+        if(this.path_XML_gpo.contains("\\build\\"))
+            this.path_XML_gpo = this.path_XML_gpo.replace("\\build\\", "\\");
+        
+        System.out.println("LoginValidator\n->" + path_XML_gpo);
+    }
+    
+    
+    /**
+     * Description: This function search a user and verify if the password is the correct.
      *
      * @param email
      * @param user_name
@@ -63,7 +86,13 @@ public class LoginValidator {
         }
         return false;
     }
-
+    
+    
+    /**
+     * Description: This function gets a list object of users from XML.
+     * 
+     * @return List
+     */
     public List getUsersFromXML() {
         System.out.println("OurServlets.LoginValidator.getUsersFromXML()");
         List user_element_list = null;
@@ -83,7 +112,14 @@ public class LoginValidator {
         }
         return user_element_list;
     }
-
+    
+    
+    /**
+     * Description: This function gets the specify user 
+     *              who wants to do some operation.
+     * @param id
+     * @return Element
+     */    
     public Element getUser(String id) {
         System.out.println("OurServlets.LoginValidator.getUser() id: " + id);
         //Instance of a SAXBuilder object
@@ -112,7 +148,14 @@ public class LoginValidator {
         }
         return null;
     }
-
+    
+    
+    /**
+     * Description: This function drop, if is exists, an user from storage XML
+     *              
+     * @param id_email 
+     * @return boolean
+     */
     public boolean dropUser(String id_email) {
         System.out.println(" - - - OurServlets.LoginValidator.dropUser() id_email: " + id_email + " - - - ");
         boolean isDrop = false;
@@ -144,7 +187,15 @@ public class LoginValidator {
         System.out.println(">>isDrop: " + isDrop);
         return isDrop;
     }
-
+    
+    
+    /**
+     * Description: This function update an user from storage XML.
+     * 
+     * @param id
+     * @param user
+     * @return void
+     */
     public void updateUser(String id, User user) {
         System.out.println("OurServlets.LoginValidator.updateUser() id " + id + " "
                 + " user " + user);
@@ -189,6 +240,97 @@ public class LoginValidator {
             System.err.println("An exception has occurred in LoginValidator.updateUser Exception " + e);
         }
     }
-   
+    
+    
+    /**
+     * Description: This function verify if an group exists into groups XML.
+     * 
+     * @param turno
+     * @param nameGpo 
+     * @return boolean
+     */
+    public boolean isGroup(String turno, String nameGpo) {
+        System.out.println("OurServlets.LoginValidator.isGroup() Turno: " + turno + " Name " + nameGpo);
+        SAXBuilder builder = new SAXBuilder();
+        File XML_file = new File(path_XML_gpo);
+        try {
+            Document doc = builder.build(XML_file);
+            Element rootNode = doc.getRootElement();
+            /*<user></user>*/
+            List chiildren = rootNode.getChildren(GROUP);
+            for (int i = 0; i < chiildren.size(); i++) {
+                /*Verify if the group exists*/
+                Element node = (Element) chiildren.get(i);
+                if (node.getChildText(NAME_GPO).equals(nameGpo) &&
+                    node.getChildText(TURNO_GPO).equals(turno)) {
+                    return true;
+                }
+            }
+
+        } catch (IOException | JDOMException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+    
+    
+    /**
+     * Description: This function gets all whole groups from groups XML.
+     *  
+     * @return List
+     */
+    public List getGroupsFromXML() {
+        System.out.println("OurServlets.LoginValidator.getGroupsFromXML()");
+        List groups_elements_list = null;
+        SAXBuilder SAXbuilder = new SAXBuilder();
+        File XML_file = new File(path_XML_gpo);
+        try {
+            Document document = SAXbuilder.build(XML_file);
+            Element root_element = document.getRootElement();
+            groups_elements_list = root_element.getChildren(GROUP);
+            
+        } catch (IOException e) {
+            System.err.println("An exception has occurred in LoginValidator.getGroupsFromXML file maybe doesn't exists IOException " + e);
+        } catch (JDOMException e) {
+            System.err.println("An exception has occurred in LoginValidator.getGroupsFromXML maybe XML is not well conformed or don't valid JDOMException " + e);
+        } catch (Exception e) {
+            System.err.println("An exception has occurred in LoginValidator.getGroupsFromXML Exception " + e);
+        }
+        return groups_elements_list;
+    }
+    
+    
+    /**
+     * Description: This function gets the specify groups 
+     *              which wants to do some operation.
+     * @param turno
+     * @param nameGpo 
+     * @return Element
+     */    
+    public Element getGroup(String turno, String nameGpo) {
+        System.out.println("OurServlets.LoginValidator.getGpo() nameGpo: " + nameGpo);
+        //Instance of a SAXBuilder object
+        SAXBuilder SAXbuilder = new SAXBuilder();
+        //Making an instance of File object and putting the path of our XML_file
+        File XML_file = new File(path_XML_gpo);
+        try {
+            Document document = SAXbuilder.build(XML_file);
+            Element root_element = document.getRootElement();
+            List group_element_list = root_element.getChildren(GROUP);
+            for (int i = 0; i < group_element_list.size(); i++) {
+                Element group = (Element) group_element_list.get(i);
+                if (group.getChildText(NAME_GPO).equals(nameGpo) && 
+                    group.getChildText(TURNO_GPO).equals(turno))
+                    return group;
+            }
+        } catch (IOException e) {
+            System.err.println("An exception has occurred in LoginValidator.getUser file maybe doesn't exists IOException " + e);
+        } catch (JDOMException e) {
+            System.err.println("An exception has occurred in LoginValidator.getUser maybe XML is not well conformed or don't valid JDOMException " + e);
+        } catch (Exception e) {
+            System.err.println("An exception has occurred in LoginValidator.getUser Exception " + e);
+        }
+        return null;
+    }
 
 }

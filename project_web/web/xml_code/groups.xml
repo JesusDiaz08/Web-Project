@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grupos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="groups.xsd">
+  <grupo>
+    <turno_gpo>Matutino</turno_gpo>
+    <nombre_gpo>2CM7</nombre_gpo>
+  </grupo>
+  <grupo>
+    <turno_gpo>Matutino</turno_gpo>
+    <nombre_gpo>2CM8</nombre_gpo>
+  </grupo>
+  <grupo>
+    <turno_gpo>Vespertino</turno_gpo>
+    <nombre_gpo>2CM9</nombre_gpo>
+  </grupo>
+</grupos>
+

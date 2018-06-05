@@ -10,21 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
-
 import static Utilities.OurXML.*;
-import Utilities.User;
-import java.io.FileOutputStream;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
+import java.util.List;
 
-public class Servlet_update extends HttpServlet {
+public class Servlet_joinGroup extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
-        System.out.println("I'm on Servlet_Update");
         String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
+        path += "\\groups.xml";
         
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();
@@ -32,14 +27,12 @@ public class Servlet_update extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String id = request.getParameter("id"); /*Puede ser correo o usuario*/
-        
         LoginValidator verify = new LoginValidator(path);
-        
         Element user = verify.getUser(id);
-        if (user!=null) {
-            crearformulario(writer,user);
-        }
         
+        if (user!=null) {
+            joinGroup(writer,user,verify);
+        }
         Document document = null;
         Element rootElement = null;
         try{
@@ -59,32 +52,28 @@ public class Servlet_update extends HttpServlet {
             System.err.println("An Excpetion has occurred Servlet_update.doPost" + e);
         }
     }
-    public static void crearformulario(PrintWriter pw, Element user)
-    {
-            String name = user.getChildText(NAME);
-            String last_name = user.getChildText(LAST_NAME);
-            String email = user.getAttributeValue(ATTR_EMAIL);
+    public static void joinGroup(PrintWriter pw, Element user,LoginValidator verify){
             String user_name = user.getAttributeValue(ATTR_USER_NAME);
-            String password = user.getChildText(PASSWORD);
-            String type_user = user.getAttributeValue(ATTR_TYPE_USER);
             pw.println("<!DOCTYPE html>");
             pw.println("<html>");
             pw.println("<head>");
-            pw.println("<title>UPDATE</title>");
+            pw.println("<title>JOIN GROUP</title>");
             pw.println("</head>");
             pw.println("<body>");
-            pw.println("<form action='Servlet_call_upd' method='POST'> </br>");
-            pw.println("Nombre: <input type='text' value='"+name+"' name='name'/> </br>");
-            pw.println("Apellido: <input type='text' value='"+last_name+"' name='last_name'/> </br>");
-            pw.println("Email: <input type='email' value='"+email+"' name='email'/> </br>");
-            pw.println("Password: <input type='password' value='"+password+"' name='password'/> </br>");
-            pw.println("Username: <input type='text' value='"+user_name+"' name='user'/> </br>");
-            pw.println("Tipo de usuario: <select name=\"type_user\" required value='"+type_user+"'>\n" +
-"                         <option value=\"student\">Alumno</option>\n" +
-"                         <option value=\"teacher\">Profesor</option>\n" +
-"                         <option value=\"administrator\">Administrador</option>\n" +
-"                     </select>");
-            pw.println("<input type='submit' value='Update'/>");
+            pw.println("<form action='Servlet_call_join' method='POST'> </br>");
+            pw.println("<p>The student "+user_name+" is going to join to:</p>");
+            List groups = verify.getGroupsFromXML();
+            pw.println("Group: <select name='id-gpo' required>");
+            for (int i = 0; i < groups.size(); i++) {
+               Element group = (Element) groups.get(i);
+               pw.println("<option value='gpo-"+i+"'>"+group.getChildText(NAME_GPO)+"</option>");
+            }
+            pw.println("</select>");
+            pw.println("Turno: <select name='id-turno' required>");
+                pw.print("<option value='turno-mat'>Matutino</option>");
+                pw.print("<option value='turno-ves'>Vespertino</option>");
+            pw.println("</select>");
+            pw.println("<input type='submit' value='Join'/>");
             pw.println("</form>");
             pw.println("</body>");
             pw.println("</html>");
