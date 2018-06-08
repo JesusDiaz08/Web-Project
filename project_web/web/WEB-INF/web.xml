@@ -52,6 +52,10 @@
         <servlet-name>Servlet_joinGroup</servlet-name>
         <servlet-class>OurServlets.Servlet_joinGroup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Servlet_Diagram</servlet-name>
+        <servlet-class>OurServlets.Servlet_Diagram</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>Servlet_joinGroup</servlet-name>
         <url-pattern>/Servlet_joinGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_Diagram</servlet-name>
+        <url-pattern>/Servlet_Diagram</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
