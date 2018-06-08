@@ -60,6 +60,10 @@
         <servlet-name>Servlet_get_text</servlet-name>
         <servlet-class>OurServlets.Servlet_get_text</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>OurServlets.UploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>Servlet_get_text</servlet-name>
         <url-pattern>/Servlet_get_text</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/UploadServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
