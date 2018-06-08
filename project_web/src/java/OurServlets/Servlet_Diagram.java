@@ -47,19 +47,35 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("var canvas = new fabric.Canvas('mcanvas');");
        pw.println("var text=new fabric.Text('"+texto+"',{left:300,top:10,fontSize:14});");
        pw.println("canvas.add(text);");
-       pw.println("text.set('selectable',false);");
+       pw.println("text.set('selectable',true);");
         for (int i = 0; i < elementos; i++) {
+            /*Crear whitespaces*/
             pw.println("var rect"+i+" = new fabric.Rect({");
             pw.println("left:"+left+",top:"+top+",fill:'#1e90ff',width:150,height:100});");
             pw.println("canvas.add(rect"+i+");");
-            pw.println("rect"+i+".set('selectable',false);");
+            pw.println("rect"+i+".set('selectable',true);");
+            /*Crear objetos a mover*/
+            pw.println("var recta"+i+" = new fabric.Rect({");
+            pw.println("left:"+left+",top:"+(top-200)+",fill:'black',width:150,height:100});");
+            pw.println("canvas.add(recta"+i+");");
+            pw.println("recta"+i+".set('selectable',false);");
+            
+            pw.println("var group = new fabric.Group([ texto"+i+", recta"+i+" ], {\n" +
+                  "  left: "+left+",\n" +
+                  "  top: "+(top-200)+",\n" +
+                  "});\n" +
+                  "\n" +
+                  "canvas.add(group);");
+            
             left+=200;
         }
        
+       pw.println("function myFunction(){console.log(JSON.stringify(canvas));}");
        
        
        pw.println("</script>");
-       pw.println("<input type='submit' name='Enviar'   >");
+       pw.println("<input class=\"button b1\" type=\"button\" value=\"Agregar\" onclick=\"myFunction();\"/>");
+       pw.println("<input type='submit' name='Enviar'>");
        pw.println("</body>");
        
        pw.println("</html>");
