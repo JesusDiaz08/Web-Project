@@ -28,5 +28,11 @@
     <password>123edc</password>
     <projects>algo</projects>
   </user>
+  <user type_user="teacher" id_email="manu@gmail.com" id_user="Manuel">
+    <name>Manuel</name>
+    <last_name>Moreno</last_name>
+    <password>jdsjdsnjsd</password>
+    <projects>algo</projects>
+  </user>
 </users>
 

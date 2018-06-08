@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -28,6 +29,9 @@ public class Administrador extends HttpServlet {
         PrintWriter write = response.getWriter();
         String path = request.getRealPath("\\xml_code");
         path += "\\storage.xml";
+        
+        /*ServletContext context = request.getServletContext();
+        String ruta = context.getRealPath("/") + "xml_code/storage.xml";*/
         
         String param_frame_right = "?"+"typeUser"+"="+"Administrator";
         String param_frame_left = "?";
