@@ -12,10 +12,6 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
 import static Utilities.OurXML.*;
-import Utilities.User;
-import java.io.FileOutputStream;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 
 public class Servlet_update extends HttpServlet {
     
@@ -23,8 +19,7 @@ public class Servlet_update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
         System.out.println("I'm on Servlet_Update");
-        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");//request.getRealPath("\\xml_code");
-        //path += "\\storage.xml";
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
         
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();

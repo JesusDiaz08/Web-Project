@@ -23,17 +23,10 @@ public class Servlet_register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
-        if(path.contains("\\build\\"))
-            path = path.replace("\\build\\", "\\");
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
         System.out.println("--->>"+path);
         
-        ServletContext app = request.getServletContext();
-        String str_path = app.getRealPath("/xml_code/storage.xml");
-        System.out.println(">>>> " + str_path);
-        
-        File file = new File(str_path);
+        File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("name");
@@ -57,7 +50,7 @@ public class Servlet_register extends HttpServlet {
                 document = new Document();
                 rootElement = new Element(ROOT);
             }
-            LoginValidator validator = new LoginValidator(str_path);
+            LoginValidator validator = new LoginValidator(path);
             
             if (!validator.isUser(user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);

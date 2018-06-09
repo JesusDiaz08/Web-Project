@@ -34,8 +34,9 @@
                 if(rootPath.includes("/build/"))
                     rootPath = rootPath.replace("/build/","/");
                 
-                rootPath += "/xml_code/";
-                return rootPath+"storage.xml";//'http://localhost:8080/project_web/xml_code/storage.xml';
+                rootPath += "/xml_code/storage.xml";
+                alert(rootPath);
+                return rootPath;
             }
              function initVariables(){
                 content = document.getElementById("table_body");
@@ -96,7 +97,7 @@
     <body onload="onLoad()">
         <header>
             <div align="right">
-                <a href="back_end/log_in.html" target = "_top">Sign Out</a>
+                <a href="log_in.html" target = "_top">Sign Out</a>
             </div>
         </header>
         <h1 align="center">ADMINISTRADOR</h1>

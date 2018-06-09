@@ -18,8 +18,7 @@ public class Servlet_joinGroup extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
-        String path = request.getRealPath("\\xml_code");
-        path += "\\groups.xml";
+        String path = request.getServletContext().getRealPath("/xml_code/groups.xml");
         
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();

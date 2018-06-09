@@ -26,8 +26,7 @@ public class Teacher extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
         
         String param_frame_right = "?"+"typeUser"+"="+"Profesor";
         String param_frame_left = "?";

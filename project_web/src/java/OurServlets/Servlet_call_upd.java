@@ -30,9 +30,7 @@ public class Servlet_call_upd extends HttpServlet {
             throws ServletException, IOException {
         
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
-        //System.out.println(" ->-> "+path);
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
         
         File file = new File(path);
         SAXBuilder saxBuilder = new SAXBuilder();

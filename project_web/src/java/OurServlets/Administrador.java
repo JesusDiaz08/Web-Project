@@ -31,14 +31,6 @@ public class Administrador extends HttpServlet {
         ServletContext context = request.getServletContext();
         String path = context.getRealPath("/xml_code/storage.xml");
         System.out.println(path);
-        //String path = request.getRealPath("\\xml_code");
-        
-        
-        //path += "\\storage.xml";
-        
-        /*ServletContext context = request.getServletContext();
-        String ruta = context.getRealPath("/") + "xml_code/storage.xml";*/
-        
         String param_frame_right = "?"+"typeUser"+"="+"Administrator";
         String param_frame_left = "?";
         int num_content = 1;

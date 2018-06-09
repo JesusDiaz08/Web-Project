@@ -28,10 +28,6 @@ public class LoginValidator {
      */
     public LoginValidator(String path_XML) {
         this.path_XML = path_XML;
-        
-        if(this.path_XML.contains("\\build\\"))
-            this.path_XML = this.path_XML.replace("\\build\\", "\\");
-        
         System.out.println("LoginValidator\n->" + path_XML);
     }
     
@@ -44,9 +40,6 @@ public class LoginValidator {
      */
     public LoginValidator(String gpo,String path_XML_gpo) {  /*Get all whole data of groups.xml*/
         this.path_XML_gpo = path_XML_gpo;
-        
-        if(this.path_XML_gpo.contains("\\build\\"))
-            this.path_XML_gpo = this.path_XML_gpo.replace("\\build\\", "\\");
         
         System.out.println("LoginValidator\n->" + path_XML_gpo);
     }

@@ -22,6 +22,7 @@ public class Servlet_Admin extends HttpServlet {
              
         PrintWriter out=response.getWriter();
             
+        System.out.println(request.getContextPath());
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");

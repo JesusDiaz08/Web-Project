@@ -24,8 +24,7 @@ public class Servlet_login extends HttpServlet {
         System.out.println("si entra al servlet-login");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
 
         //Instance of a class that we use to search a user
         LoginValidator login = new LoginValidator(path);

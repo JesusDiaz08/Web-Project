@@ -39,14 +39,5 @@ public class Servlet_get_text extends HttpServlet {
         out.println("</html>");
         
     }
-    
-    //Login
-    //Registro
-    //Cursos
-    //Materiales visuales
-    //Evaluaciones
-    //Reportes
-    
-    //Conceptos
-    //Ejercicios
+
 }
