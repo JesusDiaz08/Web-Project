@@ -15,6 +15,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import javax.servlet.ServletContext;
 
 public class Servlet_register extends HttpServlet {
     
@@ -27,8 +28,12 @@ public class Servlet_register extends HttpServlet {
         if(path.contains("\\build\\"))
             path = path.replace("\\build\\", "\\");
         System.out.println("--->>"+path);
-
-        File file = new File(path);
+        
+        ServletContext app = request.getServletContext();
+        String str_path = app.getRealPath("/xml_code/storage.xml");
+        System.out.println(">>>> " + str_path);
+        
+        File file = new File(str_path);
         SAXBuilder saxBuilder = new SAXBuilder();
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("name");
@@ -52,7 +57,7 @@ public class Servlet_register extends HttpServlet {
                 document = new Document();
                 rootElement = new Element(ROOT);
             }
-            LoginValidator validator = new LoginValidator(path);
+            LoginValidator validator = new LoginValidator(str_path);
             
             if (!validator.isUser(user_name,password)) { /*User doesn't exist*/
                 User user = new User(name,last_name,email,user_name,password,type_user);
@@ -70,7 +75,7 @@ public class Servlet_register extends HttpServlet {
                 write.println("function refreshParent() {");
                 write.println("window.opener.location.href = window.opener.location.href;");
                 write.println("window.close();}");
-                write.println("alert('"+path+"');");
+                //write.println("alert('"+path+"');");
                 write.println("refreshParent();");
                 write.println("</script>");
                 write.println("</head>");

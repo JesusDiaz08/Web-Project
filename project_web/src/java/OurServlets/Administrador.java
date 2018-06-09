@@ -27,8 +27,14 @@ public class Administrador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
+        
+        ServletContext context = request.getServletContext();
+        String path = context.getRealPath("/xml_code/storage.xml");
+        System.out.println(path);
+        //String path = request.getRealPath("\\xml_code");
+        
+        
+        //path += "\\storage.xml";
         
         /*ServletContext context = request.getServletContext();
         String ruta = context.getRealPath("/") + "xml_code/storage.xml";*/

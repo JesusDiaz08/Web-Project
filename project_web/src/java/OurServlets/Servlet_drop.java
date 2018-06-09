@@ -27,8 +27,7 @@ public class Servlet_drop extends HttpServlet {
         System.out.println("I'm on Servlet_drop");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter write = response.getWriter();
-        String path = request.getRealPath("\\xml_code");
-        path += "\\storage.xml";
+        String path = request.getServletContext().getRealPath("/xml_code/storage.xml");//request.getRealPath("\\xml_code");
         
         String id_email = request.getParameter("id_email");
         LoginValidator validator = new LoginValidator(path);

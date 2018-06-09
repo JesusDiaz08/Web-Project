@@ -22,14 +22,8 @@
       <project>Proyecto 1</project>
     </projects>
   </user>
-  <user type_user="student" id_email="monse@hotmail.com" id_user="Monse">
-    <name>MonseE</name>
-    <last_name>Morales</last_name>
-    <password>123edc</password>
-    <projects>algo</projects>
-  </user>
-  <user type_user="teacher" id_email="manu@gmail.com" id_user="Manuel">
-    <name>Manuel</name>
+  <user type_user="student" id_email="manu@gmail.com" id_user="Manuel">
+    <name>Manolo</name>
     <last_name>Moreno</last_name>
     <password>jdsjdsnjsd</password>
     <projects>algo</projects>

@@ -35,7 +35,7 @@
                     rootPath = rootPath.replace("/build/","/");
                 
                 rootPath += "/xml_code/";
-                return 'http://localhost:8080/project_web/xml_code/storage.xml';
+                return rootPath+"storage.xml";//'http://localhost:8080/project_web/xml_code/storage.xml';
             }
              function initVariables(){
                 content = document.getElementById("table_body");
@@ -44,7 +44,6 @@
             function onLoad(){
                 initVariables();
                 createXMLHttpRequest();
-                alert(URL);
                 xml_http.open("GET",URL,true);
                 xml_http.onreadystatechange = function (){
                     if (xml_http.readyState === 4 && xml_http.status===200) {
@@ -68,28 +67,36 @@
             }
             function addUser(){
                 pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');
+                onLoad();
             }
             function editUser(id_user){
                 var parametro = "?id="+id_user;
                 pop_ventana = window.open('../Servlet_update'+parametro,'Editar','width=400,height=650');
+                onLoad();
             }
             function dropUser(id_email){
                 var parametro = "?id_email="+id_email;
                 document.location.href='../Servlet_drop'+parametro;
                 var list = document.getElementById("table_body");
                 list.removeChild(list.childNodes[id_email]);
-                xmlHttp.onreadystatechange();                
+                xmlHttp.onreadystatechange();    
+                onLoad();
             }
             function joinGroup(id){
                 var parametro = "?id="+id;
                 pop_ventana = window.open('../Servlet_joingGroup'+parametro,'Agregar','width=400,height=650');
             }
+            
+            function refreshParent() {
+               window.opener.location.href = window.opener.location.href;;
+               window.close();
+           }
         </script>
         </head>
     <body onload="onLoad()">
         <header>
             <div align="right">
-                <a href="backend/log_in.html" target = "_top">Sign Out</a>
+                <a href="back_end/log_in.html" target = "_top">Sign Out</a>
             </div>
         </header>
         <h1 align="center">ADMINISTRADOR</h1>
