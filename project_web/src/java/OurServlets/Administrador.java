@@ -31,27 +31,28 @@ public class Administrador extends HttpServlet {
         ServletContext context = request.getServletContext();
         String path = context.getRealPath("/xml_code/storage.xml");
         System.out.println(path);
-        String param_frame_right = "?"+"typeUser"+"="+"Administrator";
-        String param_frame_left = "?";
-        int num_content = 1;
-        
-        param_frame_left += "num_content" + "=" + num_content 
-                         + "&" + "href0"+"="+"back_end/admin.html"
-                         + "&" + "content0" + "=" + "USERS";
-        
-        
-        
-        write.println("<!DOCTYPE html>");
-        write.println("<html>");
-        write.println("<head>");
-        write.println("<title>Administrador</title>");
-        write.println("</head>");
-        write.println("<frameset cols='10%,*' noresize> ");
-        write.println("<frame src='Frame_Left"+param_frame_left+"'>");
-        write.println("<frame src='Frame_Rigth"+param_frame_right+"' name='contenidos' >");
-        write.println("</frameset> ");
-        write.println("<body>");
-        write.println("</body>");
-        write.println("</html>");
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        String userName = (String)session.getAttribute("attr_user");
+            
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+            out.println("<head>");
+                out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+                out.println("<link rel='stylesheet' href='back_end/css/main_admin.css'>");
+            out.println("</head>");
+
+            out.println("<body>");
+                out.println("<div align='right'><nav>");
+                out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
+                out.println("</nav></div>");
+                out.println("<div id='mySidenav' class='sidenav'>");
+                    out.println("<a href='back_end/admin.html' id='user'>Usuarios</a>");
+                out.println("</div>");
+                out.println("<div style='margin-left:130px;'>");
+                    out.println("<h2>Bienvenido Administrador: "+userName+"</h2>");
+                out.println("</div>");
+            out.println("</body>");
+        out.println("</html>");
     }
 }
