@@ -65,7 +65,7 @@ public class Servlet_login extends HttpServlet {
             write.println("<html><head><title>User not registered</title></head>");
             write.println("<body>");
             write.println("<center><h2>This user has not been registered yet</h2></center>");
-            write.println("<center><a href='back_end/session.html'>Volver</a></center>");
+            write.println("<center><a href='back_end/log_in.html'>Volver</a></center>");
             write.println("</body></html>");
             write.close();
         }
