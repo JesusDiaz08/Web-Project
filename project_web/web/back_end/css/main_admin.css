@@ -3,7 +3,7 @@
     Author     : kaimo
 */
 #mySidenav a {
-    position: absolute;
+    position: fixed;
     left: -80px;
     transition: 0.3s;
     padding: 15px;
@@ -18,9 +18,36 @@
     left: 0;
 }
 
+/*APARTADO DEL ADMINISTRADOR*/
 #user {
     top: 20px;
     background-color: #2196F3;
 }
 
 
+/*APARTADO UNICAMENTE DEL PROFESOR*/
+#createDiagram {
+    top: 80px;
+    background-color: #2196F3;
+}
+
+#setActivity {
+    top: 160px;
+    background-color: #f44336;
+}
+
+#evalue{
+    top: 220px;
+    background-color: #555
+}
+
+/*APARTADO DEL ALUMNO*/
+#myActivity {
+    top: 80px;
+    background-color: #2196F3;
+}
+
+#myProjects {
+    top: 160px;
+    background-color: #f44336;
+}

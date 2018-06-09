@@ -25,29 +25,32 @@ public class Teacher extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter write = response.getWriter();
+        PrintWriter out = response.getWriter();
         String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
+        HttpSession session = request.getSession();
+        String str_user = String.valueOf(session.getAttribute("attr_user"));
         
-        String param_frame_right = "?"+"typeUser"+"="+"Profesor";
-        String param_frame_left = "?";
-        int num_content = 3;
-        
-        param_frame_left += "num_content" + "=" + num_content 
-                         + "&" + "href0" +"=" + "back_end/teacher/teacher_activity.html" + "&" + "content0" + "=" + "CREAR DIAGRAMA"
-                         + "&" + "href1" +"=" + "back_end/teacher/teacher_asign.html" + "&" + "content1" + "=" + "ASIGNAR ACTIVIDAD"
-                         + "&" + "href2" +"=" + "back_end/teacher/teacher_evalue.html" + "&" + "content2" + "=" + "EVALUAR";
-        
-        write.println("<!DOCTYPE html>");
-        write.println("<html>");
-        write.println("<head>");
-        write.println("<title>Profesor</title>");
-        write.println("</head>");
-        write.println("<frameset cols='10%,*' noresize> ");
-        write.println("<frame src='Frame_Left"+param_frame_left+"'>");
-        write.println("<frame src='Frame_Rigth"+param_frame_right+"' name='contenidos' >");
-        write.println("</frameset> ");
-        write.println("<body>");
-        write.println("</body>");
-        write.println("</html>");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+            out.println("<head>");
+                out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+                out.println("<link rel='stylesheet' href='back_end/css/main_admin.css'>");
+                out.println("<title>Profesor</title>");
+            out.println("</head>");
+
+            out.println("<body>");
+                out.println("<div align='right'><nav>");
+                out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
+                out.println("</nav></div>");
+                out.println("<div id='mySidenav' class='sidenav'>");
+                    out.println("<a href='back_end/teacher/teacher_activity.html' id='createDiagram'>Crear diagrama</a>");
+                    out.println("<a href='back_end/teacher/teacher_asign.html' id='setActivity'>Asignar</a>");
+                    out.println("<a href='back_end/teacher/teacher_activity.html' id='evalue'>Evaluar</a>");
+                out.println("</div>");
+                out.println("<div style='margin-left:130px;'>");
+                    out.println("<h2>Bienvenido Profesor: "+str_user+"</h2>");
+                out.println("</div>");
+            out.println("</body>");
+        out.println("</html>");
     }
 }

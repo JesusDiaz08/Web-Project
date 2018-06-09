@@ -49,7 +49,7 @@ public class Servlet_login extends HttpServlet {
                 response.sendRedirect("Administrador");
             }
             //The user is a teacher
-            else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)){ /*Teacher*/
+            else if(el.getAttributeValue(ATTR_TYPE_USER).equals(TEACHER)) { /*Teacher*/
                 response.sendRedirect("Teacher");
             }
             //The user is a student
