@@ -29,6 +29,9 @@ public class Teacher extends HttpServlet {
         String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
         HttpSession session = request.getSession();
         String str_user = String.valueOf(session.getAttribute("attr_user"));
+        HttpSession UpDownLoad = request.getSession();
+        UpDownLoad.setAttribute("repo_teacher",str_user); /*Se usará para crear una carpeta con el nombre del profesor
+                                                            en donde se almacenarán sus subidas de archivos*/
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
@@ -43,9 +46,9 @@ public class Teacher extends HttpServlet {
                 out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
                 out.println("</nav></div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
-                    out.println("<a href='back_end/teacher/teacher_activity.html' id='createDiagram'>Crear diagrama</a>");
-                    out.println("<a href='back_end/teacher/teacher_asign.html' id='setActivity'>Asignar</a>");
-                    out.println("<a href='back_end/teacher/teacher_activity.html' id='evalue'>Evaluar</a>");
+                    out.println("<a href='back_end/teacher_activity.html' id='createDiagram'>Crear diagrama</a>");
+                    out.println("<a href='back_end/teacher_asign.html' id='setActivity'>Asignar</a>");
+                    out.println("<a href='back_end/teacher_activity.html' id='evalue'>Evaluar</a>");
                 out.println("</div>");
                 out.println("<div style='margin-left:130px;'>");
                     out.println("<h2>Bienvenido Profesor: "+str_user+"</h2>");

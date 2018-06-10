@@ -43,8 +43,8 @@ public class Student extends HttpServlet {
                 out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
                 out.println("</nav></div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
-                    out.println("<a href='back_end/user/user_activity.html' id='myActivity'>Actividades</a>");
-                    out.println("<a href='back_end/user/user_projects.html' id='myProjects'>Proyectos</a>");
+                    out.println("<a href='back_end/user_activity.html' id='myActivity'>Actividades</a>");
+                    out.println("<a href='back_end/user_projects.html' id='myProjects'>Proyectos</a>");
                 out.println("<div style='margin-left:130px;'>");
                     out.println("<h2>Bienvenido Alumno: "+str_user+"</h2>");
                 out.println("</div>");

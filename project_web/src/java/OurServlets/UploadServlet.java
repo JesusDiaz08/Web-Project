@@ -2,30 +2,31 @@ package OurServlets;
 
 import java.io.*;
 import java.util.*;
- 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import static Utilities.OurXML.*;
+import javax.servlet.ServletContext;
 
 public class UploadServlet extends HttpServlet 
 {
    
    private boolean isMultipart;
    private String filePath;
-   private int maxFileSize = 10*1024 * 1024;
-   private int maxMemSize = 4 * 1024;
+   private int maxFileSize = 10*GB;
+   private int maxMemSize =  10*MB;
    private File file ;
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, java.io.IOException {
    
       // Check that we have a file upload request
-      filePath = request.getRealPath("/"); 
+      ServletContext app = request.getServletContext();
+      filePath = app.getRealPath("/"); 
       isMultipart = ServletFileUpload.isMultipartContent(request);
       response.setContentType("text/html");
       java.io.PrintWriter out = response.getWriter( );

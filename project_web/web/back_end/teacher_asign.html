@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Asignar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../back_end/css/upload.css">
+    </head>
+    <body>
+        <div class="principal">
+            <h1>Cargar contenido</h1>
+            <h2>Archivos máximo de 1GB</h2>
+            <form action="../UploadServlet" method="post" id="form-upload" enctype = "multipart/form-data">
+                <div class="form-1-2">
+                    <label>Subir archivo: </label>
+                    <input type = "file" name = "file" size = "45" required/>
+                </div>
+                
+                <div class="barra">
+                    <div class="barra_azul" id="barra_estado">
+                        <span></span>
+                    </div>
+                </div>
+                
+                <div class="acciones">
+                    <input type="submit" class="btn" value="Subir"/>
+                    <input type="button" class="cancel" id="cancelar" value="Cancelar"/>
+                </div>
+            </form>
+        </div>
+        <script src="../upload.js"></script>
+
+        
+    </body>
+</html>

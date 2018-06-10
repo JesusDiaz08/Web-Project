@@ -26,4 +26,7 @@ public class OurXML {
     public static final String TEACHER = "teacher";
     public static final String STUDENT = "student";
     
+    public static final int KB = 1024;
+    public static final int MB = KB*1024;
+    public static final int GB = MB*1024;
 }
