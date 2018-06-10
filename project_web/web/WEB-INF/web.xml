@@ -68,6 +68,18 @@
         <servlet-name>Servlet_student_diagram</servlet-name>
         <servlet-class>OurServlets.Servlet_student_diagram</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletGetUsers</servlet-name>
+        <servlet-class>OurServlets.ServletGetUsers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEditUser</servlet-name>
+        <servlet-class>OurServlets.ServletEditUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDropUser</servlet-name>
+        <servlet-class>OurServlets.ServletDropUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -135,6 +147,18 @@
     <servlet-mapping>
         <servlet-name>Servlet_student_diagram</servlet-name>
         <url-pattern>/Servlet_student_diagram</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGetUsers</servlet-name>
+        <url-pattern>/ServletGetUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEditUser</servlet-name>
+        <url-pattern>/ServletEditUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDropUser</servlet-name>
+        <url-pattern>/ServletDropUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Administrator</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class='row'>
+            <div class="col-ms-12 mt-5">
+                <table class="table" id="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">USUARIO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">E-MAIL</th>
+                            <th scope="col">TIPO</th>
+                            <th colspan="2">ACCIÓN</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody id='table_body'></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edita a este usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden=true>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form">
+                        <label class="sr-only" for="usuario">Usuario</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="UserEdit" placeholder="Usuario"/>
+                        <label class="sr-only" for="nombre">Nombre</label>
+                        <input type="text" class="form-control md-2 mr-sm-2" id="NameEdit" placeholder="Nombre"/>
+                        <label class="sr-only" for=lastname>Apellido</label>
+                        <input type="text" class="form-control md-2 mr-sm-2" id="LastNameEdit" placeholder="Apellido"/>
+                        <label class="sr-only" for="email">E-MAIL</label>
+                        <input type="email" class="form-control md-2 mr-sm-2" id="EmailEdit" placeholder="E-MAIL"/>
+                        <label class="sr-only" for="password">Contraseña</label>
+                        <input type="password" class="form-control md-2 mr-sm-2" id="PasswordEdit" placeholder="Contraseña"/>
+                        <label class="sr-only" for="tipo">Tipo</label>
+                        <select name="type_user" required class="form-control ms-2 mr-sm-2" id="TypeEdit">    
+                            <option value="student">Alumno</option>
+                            <option value="teacher">Profesor</option>
+                            <option value="administrator">Administrador</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveEdit">Guardar cambios</button>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
