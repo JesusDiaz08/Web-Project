@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Teacher</title>
+	<title></title>
+	<script type="text/javascript" src="jquery-1.12.0.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="editor.js"></script>	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../back_end/css/editor.css">
+        <link rel="stylesheet" href="../back_end/css/main_admin.css">
+	<script type="text/javascript">
+            $(document).ready(function(){
+                $('#txt-content').Editor();
+                
+                $('#btn-enviar').click(function(e){
+                    e.preventDefault();
+                    $('#txt-content').text($('#txt-content').Editor('getText'));
+		    $('#frm-test').submit();
+                    /*var txt = $('#txt-content').Editor('getText');
+                    $('#texto').html(txt);*/				
+                });
+            });	
+	</script>
 </head>
 <body>
-    <h1>
-        Hola
-    </h1>
+    <header>
+            <div align="right">
+                <a href="log_in.html" target = "_top">Sign Out</a>
+            </div>
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="teacher_activity.html" id="createDiagram">Crear diagrama</a>   
+        <a href="teacher_asign.html" id="setActivity">Asignar</a>   
+        <a href="teacher_evalue.html" id="evalue">Evaluar</a>
+    </div>
+    <div class="container" style="margin-left:135px;">
+        <div class="row">
+            <div class="col-sm-8">
+                <form action="../Servlet_get_text" method="post" id="frm-test">
+                    <div class="form-group">
+                        <textarea id="txt-content" name="txt-content" style="background: #000;"></textarea><br/>
+                        N&uacute;mero de elementos:<input type="text" name="num_elementos">
+                    </div>
+                    
+                    <input type="submit" class="btn btn-default" id="btn-enviar" value="Mostrar Resultado">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div id="texto" style="border:1px solid #000; padding:10px;margin-top:20px;">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
