@@ -33,11 +33,21 @@ public class Servlet_get_text extends HttpServlet {
                 out.println("<form action='Servlet_Diagram' method='GET'>");
                     for(int i = 0; i < n; i++)
                         out.println("Ingrese texto: <input type='text' name='txt"+i+"'/><br/>");
+                    out.println("Imagen:<input type='text' name='img'/>");
                     out.println("<input type='submit'/>");
                 out.println("</form>");
             out.println("</body>");
         out.println("</html>");
         
     }
-
+    
+    //Login
+    //Registro
+    //Cursos
+    //Materiales visuales
+    //Evaluaciones
+    //Reportes
+    
+    //Conceptos
+    //Ejercicios
 }

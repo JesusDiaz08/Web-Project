@@ -28,11 +28,14 @@ public class Servlet_Diagram extends HttpServlet {
        
        Integer elementos=Integer.parseInt(String.valueOf(session.getAttribute("num_elementos")));
        String texto=String.valueOf(session.getAttribute("texto"));
+       String imagen=request.getParameter("img");
+        System.out.println("Imagen:"+imagen);
        PrintWriter pw=response.getWriter();
        pw.println("<!DOCTYPE html>");
        pw.println("<html>");
        pw.println("<head>");
        pw.println("<title>Diagrama</title>");
+       pw.println("<link rel=\"stylesheet\" href='back_end/css/style_diagram.css'>");
        pw.println("<script src=\"fabric.min.js\"></script>");
        pw.println("</head>");
        pw.println("<body> ");
@@ -48,36 +51,39 @@ public class Servlet_Diagram extends HttpServlet {
         for (int i = 0; i < elementos; i++) {
             /*Crear whitespaces*/
             pw.println("var rect"+i+" = new fabric.Rect({");
-            pw.println("left:"+left+",top:"+top+",fill:'#e0fcfc',width:150,height:100});");
+            pw.println("left:"+left+",top:"+top+",fill:'#e0fcfc',width:150,height:100,selectable:false});");
             pw.println("canvas.add(rect"+i+");");
-            pw.println("rect"+i+".set('selectable',false);");
+           
             /*Crear objetos a mover*/
             pw.println("var recta"+i+" = new fabric.Rect({");
             pw.println("left:"+left+",top:"+(top-200)+",fill:'#0098FF',width:150,height:100});");
             pw.println("recta"+i+".set('selectable',true);");
             pw.println("var texto"+i+" = new fabric.Text('"+request.getParameter("txt"+i)+"',{left:"+(left+10)+",top:"+(top-180)+",fontSize:14});");
-            pw.println("canvas.add(texto"+i+");");
-            pw.println("canvas.add(recta"+i+");");
-            pw.println("var group = new fabric.Group([ recta"+i+", texto"+i+" ], {\n" +
+            
+            pw.println("var group"+i+" = new fabric.Group([ recta"+i+", texto"+i+" ], {\n" +
                   "  left: "+left+",\n" +
-                  "  top: "+(top-200)+",\n" +
+                  "  top: "+(top-200)+"\n" +
                   "});\n" +
                   "\n" +
-                  "canvas.add(group);");
+                  "canvas.add(group"+i+");");
             
             left+=200;
         }
+         /*Cargar imagen*/
+         pw.println("fabric.Image.fromURL('"+imagen+"', function(myImg) {\n" +
+                        " var img1 = myImg.set({ left: 700, top: 0 ,width:200,height:200,selectable:false,center:true});\n" +
+                        " canvas.add(img1); \n" +
+                        "});");
        
        pw.println("function myFunction(){document.getElementById('textarea1').value=JSON.stringify(canvas);console.log(JSON.stringify(canvas));}");
-       
-       
        pw.println("</script>");
-       pw.println("<input class='button b1' type='button' value='Guardar estado' onclick='myFunction();'/>");
+       pw.println("<input class='button b1' type='button' value='Guardar diagrama' onclick='myFunction();'/>");
        pw.println("<textarea id='textarea1'></textarea>");
-       pw.println("<input type='submit' name='Enviar'>");
+       
        pw.println("</body>");
        
        pw.println("</html>");
+       
     }
 }
     
