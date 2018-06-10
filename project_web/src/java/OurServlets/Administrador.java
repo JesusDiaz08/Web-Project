@@ -40,6 +40,12 @@ public class Administrador extends HttpServlet {
             out.println("<head>");
                 out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
                 out.println("<link rel='stylesheet' href='back_end/css/main_admin.css'>");
+                out.println("<style>");
+                out.println("body{"
+                        + " margin:0;" 
+                        + "font-family: 'Century Gothic';"
+                        + "height: 950px;}");
+                out.println("</style>");
             out.println("</head>");
 
             out.println("<body>");

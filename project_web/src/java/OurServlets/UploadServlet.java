@@ -87,7 +87,9 @@ public class UploadServlet extends HttpServlet
                   file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
                }
                fi.write( file ) ;
-               out.println("Archivo subido: " + fileName + "<br />");
+               out.println("<script>");
+               out.println("alert('Archivo subido: " + fileName + "');");
+               out.println("</script>");
             }
          }
          out.println("</body>");
@@ -95,6 +97,7 @@ public class UploadServlet extends HttpServlet
          } catch(Exception ex) {
             System.out.println(ex);
          }
+         response.sendRedirect("Teacher");
       }
       
       public void doGet(HttpServletRequest request, HttpServletResponse response)

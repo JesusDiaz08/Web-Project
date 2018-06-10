@@ -2,6 +2,22 @@
     Created on : 9/06/2018, 08:53:18 PM
     Author     : kaimo
 */
+body{
+    margin:0;
+    font-family: "Century Gothic";
+    height: 950px;
+    background: #fff5dd;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #defef7, #ff8870);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #defef7, #ff8870); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h1{
+    color: #fff;
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+}
 
 input[type="file"]{
     margin: 0 0 15px;

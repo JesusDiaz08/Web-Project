@@ -5,9 +5,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../back_end/css/upload.css">
+        <link rel="stylesheet" href="../back_end/css/main_admin.css">
     </head>
     <body>
-        <div class="principal">
+        <header>
+            <div align="right">
+                <a href="log_in.html" target = "_top">Sign Out</a>
+            </div>
+        </header>
+        <div id="mySidenav" class="sidenav">
+            <a href="teacher_activity.html" id="createDiagram">Crear diagrama</a>   
+            <a href="teacher_asign.html" id="setActivity">Asignar</a>   
+            <a href="teacher_evalue.html" id="evalue">Evaluar</a>   
+        </div>
+        
+        <div class="principal" style="margin-left:135px;">
             <h1>Cargar contenido</h1>
             <h2>Archivos máximo de 1GB</h2>
             <form action="../UploadServlet" method="post" id="form-upload" enctype = "multipart/form-data">
@@ -21,7 +33,7 @@
                         <span></span>
                     </div>
                 </div>
-                
+                <br/>
                 <div class="acciones">
                     <input type="submit" class="btn" value="Subir"/>
                     <input type="button" class="cancel" id="cancelar" value="Cancelar"/>
@@ -29,7 +41,5 @@
             </form>
         </div>
         <script src="../upload.js"></script>
-
-        
     </body>
 </html>
