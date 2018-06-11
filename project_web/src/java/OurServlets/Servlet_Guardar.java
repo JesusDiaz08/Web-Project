@@ -28,11 +28,13 @@ public class Servlet_Guardar extends HttpServlet {
         path = path.replace("\\build\\", "\\");
         System.out.println(">>> " + path);
         HttpSession session = request.getSession();
-        String user_name = (String)session.getAttribute(NAME);
+        String user_name = (String)session.getAttribute("repo_teacher");
+        String rtf_text = (String)session.getAttribute("txt-content");
+        String project_name = (String)session.getAttribute("project_name");
         LoginValidator validator = new LoginValidator(path);
         String json=request.getParameter("json");
         System.out.println("JSON:***********"+json);
-        validator.addProject(RTF, json, user_name, PROJECTS);
+        validator.addProject(rtf_text, json, user_name, project_name);
         PrintWriter pw=response.getWriter();
         pw.println("<!DOCTYPE html>");
         pw.println("<html>");
