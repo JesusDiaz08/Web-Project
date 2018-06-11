@@ -100,6 +100,10 @@
         <servlet-name>ServletDropDiagrams</servlet-name>
         <servlet-class>OurServlets.ServletDropDiagrams</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Servlet_Guardar</servlet-name>
+        <servlet-class>OurServlets.Servlet_Guardar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>ServletDropDiagrams</servlet-name>
         <url-pattern>/ServletDropDiagrams</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_Guardar</servlet-name>
+        <url-pattern>/Servlet_Guardar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

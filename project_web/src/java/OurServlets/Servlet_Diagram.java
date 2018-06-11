@@ -107,8 +107,10 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("function Serializar(){var json=stage.toJSON();document.getElementById('textarea1').value=json;}");
        pw.println("</script>");
        pw.println("<input class='button b1' type='button' value='Guardar diagrama' onclick='Serializar();'/>");//Agregar al XML a partir de la funcion para serializar
-       pw.println("<textarea id='textarea1'></textarea>");
-       
+       pw.println("<textarea name='json' id='textarea1' form='formulario'></textarea>");
+       pw.println("<form action='Servlet_Guardar' id='formulario' method='post'>");
+       pw.println("<input type='submit'/>");
+       pw.println("</form>");
        pw.println("</body>");
        
        pw.println("</html>");
