@@ -1,9 +1,5 @@
-/* 
-    Created on : 9/06/2018, 04:40:08 PM
-    Author     : kaimo
-*/
 #mySidenav a {
-    position: relative;
+    position: fixed;
     left: -80px;
     transition: 0.3s;
     padding: 15px;
