@@ -25,7 +25,7 @@ public class Servlet_Guardar extends HttpServlet {
        throws ServletException, IOException{
        
        String json=request.getParameter("json");
-        System.out.println("JSON:"+json);
+        System.out.println("JSON:***********"+json);
        PrintWriter pw=response.getWriter();
        pw.println("<!DOCTYPE html>");
        pw.println("<html>");
