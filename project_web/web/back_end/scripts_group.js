@@ -28,6 +28,26 @@
         });
     }
 
+    function getUsersGroup(users) {
+        $("#table_groups > tbody").empty();
+        groups.forEach(function (group) {
+            $("#table_groups > tbody").append($("<tr>")
+                .append($("<td>", {
+                    text: group.nombre_gpo
+                }), $("<td>").append($("<button>", {
+                    class: 'btn btn-danger mr-2',
+                    text: 'Eliminar'
+                }).click(function () {
+                    remove(user)
+                }), $("<button>", {
+                    class: 'btn btn-warning',
+                    text: 'Editar'
+                }).click(function () {
+                    edit(user)
+                }))
+            ));
+        });
+    }
 
     function getActivities() {
         $.get("../ServletGetGroups",
