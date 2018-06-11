@@ -42,7 +42,13 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("</head>");
        pw.println("<body> ");
        /*Insertar texto que ingresa el profesor*/
-       pw.println(texto);
+       pw.println("<div style='margin-left:150px;"
+                             +"margin-top: 100;"
+                             +"margin-rigth:250'>");
+            pw.println("<p width='300*"+elementos+"' height='600'>");
+                pw.println(texto);
+            pw.println("</p>");
+       pw.println("</div>");
        pw.println("<div id=\"container\"></div>");
        pw.println("<script>");
        pw.println("function writeMessage(message) {\n" +
