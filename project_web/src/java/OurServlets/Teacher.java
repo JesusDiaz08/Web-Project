@@ -53,9 +53,14 @@ public class Teacher extends HttpServlet {
                 out.println("</nav></div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
                     out.println("<a href='back_end/teacher_activity.html' id='createDiagram'>Crear diagrama</a>");
+                out.println("</div>");
+                out.println("<div id='mySidenav' class='sidenav'>");
                     out.println("<a href='back_end/teacher_asign.html' id='setActivity'>Asignar</a>");
+                out.println("</div>");
+                out.println("<div id='mySidenav' class='sidenav'>");
                     out.println("<a href='back_end/teacher_activity.html' id='evalue'>Evaluar</a>");
                 out.println("</div>");
+                
                 out.println("<div style='margin-left:130px;'>");
                     out.println("<h2>Bienvenido Profesor: "+str_user+"</h2>");
                 out.println("</div>");
