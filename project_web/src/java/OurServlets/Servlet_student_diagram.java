@@ -25,7 +25,8 @@ public class Servlet_student_diagram extends HttpServlet {
        throws ServletException, IOException{
        
        HttpSession session=request.getSession();
-       
+       String rtf=request.getParameter("RTF");
+       String json=request.getParameter("json");
        PrintWriter pw=response.getWriter();
        pw.println("<!DOCTYPE html>");
        pw.println("<html>");
@@ -35,16 +36,21 @@ public class Servlet_student_diagram extends HttpServlet {
        pw.println("<script src=\"konva.min.js\"></script>");
        pw.println("<meta charset=\"utf-8\">");
        pw.println("</head>");
-       pw.println("<body>");
+       pw.println("<body onload='cargar()'>");
+       pw.println(rtf);
        pw.println("<div id=\"container\"></div>");
        pw.println("<script>");
        /*Funcion para deserilizar canvas*/
-       pw.println("function cargar(){var json=document.getElementById('mtext').value; var stage=Konva.Node.create(json,'container');}");
-       
+       pw.println("function cargar(){var json="+json+"; var stage=Konva.Node.create(json,'container');}");
+       /*Funcion para serializar canvas*/
+        pw.println("function Serializar(){var json=stage.toJSON();document.getElementById('textarea1').value=json;}");
        pw.println("</script>");
-       pw.println("<input class='button b1' type='button' value='Cargar canvas' onclick='cargar();'/>\n" +
+       pw.println("<textarea name='json' id='textarea1' form='formulario' style='display:none' ></textarea>");
+       pw.println("<form action='Servlet_Guardar' id='formulario' method='post'>");
+       pw.println("<input class='button b1' value='Guardar diagrama' type='submit' onclick='Serializar()'/>");
+       pw.println("</form>");
                     
-                    "<textarea id='mtext'></textarea>");//De donde carga el SVG o el JSON
+       
        pw.println("</body>");
        
        pw.println("</html>");
