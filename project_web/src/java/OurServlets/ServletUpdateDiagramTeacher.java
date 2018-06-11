@@ -43,7 +43,7 @@ public class ServletUpdateDiagramTeacher extends HttpServlet {
        pw.println("</script>");
        pw.println("<textarea name='json' id='textarea1' form='formulario' style='display:none' ></textarea>");
        pw.println("<form action='Teacher' id='formulario' method='get'>");
-       pw.println("<input class='button b1' value='Regresar' type='submit' onclick='Serializar()'/>");
+       pw.println("<input class='button b1' value='Actualizar' type='submit' onclick='Serializar()'/>");
        pw.println("</form>");
                     
        

@@ -132,6 +132,10 @@
         <servlet-name>ServletUpdateDiagramTeacher</servlet-name>
         <servlet-class>OurServlets.ServletUpdateDiagramTeacher</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSaveChanges</servlet-name>
+        <servlet-class>OurServlets.ServletSaveChanges</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -263,6 +267,10 @@
     <servlet-mapping>
         <servlet-name>ServletUpdateDiagramTeacher</servlet-name>
         <url-pattern>/ServletUpdateDiagramTeacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSaveChanges</servlet-name>
+        <url-pattern>/ServletSaveChanges</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
