@@ -80,6 +80,18 @@
         <servlet-name>ServletDropUser</servlet-name>
         <servlet-class>OurServlets.ServletDropUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletGetGroups</servlet-name>
+        <servlet-class>OurServlets.ServletGetGroups</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDropGroups</servlet-name>
+        <servlet-class>OurServlets.ServletDropGroups</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEditGroups</servlet-name>
+        <servlet-class>OurServlets.ServletEditGroups</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -159,6 +171,18 @@
     <servlet-mapping>
         <servlet-name>ServletDropUser</servlet-name>
         <url-pattern>/ServletDropUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGetGroups</servlet-name>
+        <url-pattern>/ServletGetGroups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDropGroups</servlet-name>
+        <url-pattern>/ServletDropGroups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEditGroups</servlet-name>
+        <url-pattern>/ServletEditGroups</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

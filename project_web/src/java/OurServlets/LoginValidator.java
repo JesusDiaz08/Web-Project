@@ -19,7 +19,7 @@ import org.jdom.output.XMLOutputter;
 public class LoginValidator {
 
     private String path_XML;
-    private String path_XML_gpo;
+    //private String path_XML_gpo;
     
     /**
      * Description: Constructor of LoginValidator Class
@@ -38,11 +38,11 @@ public class LoginValidator {
      * @param path_XML_gpo 
      * @param gpo
      */
-    public LoginValidator(String gpo,String path_XML_gpo) {  /*Get all whole data of groups.xml*/
-        this.path_XML_gpo = path_XML_gpo;
+    /**public LoginValidator(String gpo,String path_XML_gpo) {  /*Get all whole data of groups.xml*/
+        /**this.path_XML_gpo = path_XML_gpo;
         
         System.out.println("LoginValidator\n->" + path_XML_gpo);
-    }
+    }**/
     
     
     /**
@@ -245,7 +245,7 @@ public class LoginValidator {
     public boolean isGroup(String turno, String nameGpo) {
         System.out.println("OurServlets.LoginValidator.isGroup() Turno: " + turno + " Name " + nameGpo);
         SAXBuilder builder = new SAXBuilder();
-        File XML_file = new File(path_XML_gpo);
+        File XML_file = new File(path_XML);
         try {
             Document doc = builder.build(XML_file);
             Element rootNode = doc.getRootElement();
@@ -276,11 +276,11 @@ public class LoginValidator {
         System.out.println("OurServlets.LoginValidator.getGroupsFromXML()");
         List groups_elements_list = null;
         SAXBuilder SAXbuilder = new SAXBuilder();
-        File XML_file = new File(path_XML_gpo);
+        File XML_file = new File(path_XML);
         try {
             Document document = SAXbuilder.build(XML_file);
             Element root_element = document.getRootElement();
-            groups_elements_list = root_element.getChildren(GROUP);
+            groups_elements_list = root_element.getChildren();
             
         } catch (IOException e) {
             System.err.println("An exception has occurred in LoginValidator.getGroupsFromXML file maybe doesn't exists IOException " + e);
@@ -305,7 +305,7 @@ public class LoginValidator {
         //Instance of a SAXBuilder object
         SAXBuilder SAXbuilder = new SAXBuilder();
         //Making an instance of File object and putting the path of our XML_file
-        File XML_file = new File(path_XML_gpo);
+        File XML_file = new File(path_XML);
         try {
             Document document = SAXbuilder.build(XML_file);
             Element root_element = document.getRootElement();
