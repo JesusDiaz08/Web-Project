@@ -16,17 +16,23 @@
         </div>
     </header>
     <input type="hidden" id="idNameUser" value="<%= session.getAttribute("repo_teacher") %>"/>
-    <div id="mySidenav" class="sidenav">
-        <a href="administrator.html" id="user">Usuarios</a>
+    <div id='mySidenav' class='sidenav'>
+        <a href='teacher_activity.html' id='createDiagram'>Crear diagrama</a>
     </div>
-    <div id="mySidenav" class="sidenav">
-        <a href="groups.html" id="group">Grupos</a>
+    <div id='mySidenav' class='sidenav'>
+        <a href='teacher_asign.html' id='asign'>Asignar</a>
+    </div>
+    <div id='mySidenav' class='sidenav'>
+        <a href='teacher_activity.html' id='evalue'>Evaluar</a>
+    </div>
+    <div id='mySidenav' class='sidenav'>
+        <a href='diagrams.jsp' id='myProjects'>Mis proyectos</a>
     </div>
     
     <div align="center">
         <h1 align="center">Profesor</h1>    
     </div>
-    <div class="container">
+    <div class="container" style="margin-left:135px;">
         <div class='row'>
             <div class="col-ms-12 mt-5">
                 <table class="table" id="table_diagrams">
