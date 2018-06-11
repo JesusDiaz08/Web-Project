@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="storage.xsd">
   <user type_user="administrator" id_email="erick_thod@hotmail.com" id_user="eerick1997">
-    <name>Efrain</name>
+    <name>Erick</name>
     <last_name>Vargas</last_name>
     <password>eerick1997977</password>
     <projects />

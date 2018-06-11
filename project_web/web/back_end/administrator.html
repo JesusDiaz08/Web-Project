@@ -4,10 +4,23 @@
 <head>
     <meta charset="utf-8">
     <title>Administrator</title>
+    <link rel="stylesheet" href="css/style_admin.css">
+    <link rel="stylesheet" href="css/main_admin.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 
 <body>
+    <header>
+        <div align="right">
+            <a href="log_in.html" style="margin-right: 10px" target="_top">Sign out</a>
+        </div>
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="administrator.html" id="user">Usuarios</a>
+    </div>
+    <div style="margin-left: 130px;">
+        <h1 align="center">ADMINISTRADOR</h1>
+    </div>
     <div class="container">
         <div class='row'>
             <div class="col-ms-12 mt-5">
@@ -24,6 +37,9 @@
                     </thead>
                     <tbody id='table_body'></tbody>
                 </table>
+                <div>
+                    <button type="button" class="btn btn-primary" id="btnAdd">Añadir</button>
+                </div>
             </div>
         </div>
     </div>
