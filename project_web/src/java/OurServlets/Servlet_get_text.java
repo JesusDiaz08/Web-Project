@@ -16,8 +16,9 @@ public class Servlet_get_text extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Integer n=Integer.parseInt(request.getParameter("num_elementos"));
+        System.out.println(">>>>>>>>>>>Elementos:"+n);
         String texto=request.getParameter("txt-content");
-        System.out.println("texto: " + texto);
+        System.out.println(">>>>>>>>texto: " + texto);
         String nombre=request.getParameter("project_name");
         HttpSession session = request.getSession();
         String actual_user = String.valueOf(session.getAttribute("repo_teacher"));

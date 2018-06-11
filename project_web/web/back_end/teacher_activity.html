@@ -46,7 +46,7 @@
             var recognition;
             var recognizing = false;
             if (!('webkitSpeechRecognition' in window)) {
-		alert("¡API no soportada!");
+		alert("API no soportada");
             } else {
 		recognition = new webkitSpeechRecognition();
 		recognition.lang = "es-MX";
@@ -61,7 +61,7 @@
 
 		 for (var i = event.resultIndex; i < event.results.length; i++) {
 			if(event.results[i].isFinal)
-				document.getElementById("texto").value += event.results[i][0].transcript;
+				document.getElementById("txt").value += event.results[i][0].transcript;
 		    }
 			
 			//texto
@@ -114,15 +114,8 @@
         <div class="row">
             <div class="col-sm-8">
                 
-                <button onclick="procesar()" id="procesar">Escuchar</button>
-                <form action="../Servlet_get_text" method="post" id="prueba">
-                    <div class="form-group">
-                        <textarea id="texto" form="prueba" name="txt-content"></textarea>
-                        N&uacute;mero de elementos:<input type="text" name="num_elementos"/>
-                        Nombre del proyecto:<input type="text" name="project_name"/>
-                    </div>    
-                    <input type="submit" class="btn btn-default" id="btn-enviar" value="Mostrar Resultado">
-                </form>
+                
+            
                 
                 
                 
@@ -130,6 +123,15 @@
                 <form action="../Servlet_get_text" method="post" id="frm-test">
                     <div class="form-group">
                         <textarea id="txt-content" name="txt-content" style="background: #000;"></textarea><br/>
+                        N&uacute;mero de elementos:<input type="text" name="num_elementos"/>
+                        Nombre del proyecto:<input type="text" name="project_name"/>
+                    </div>    
+                    <input type="submit" class="btn btn-default" id="btn-enviar" value="Mostrar Resultado">
+                </form>
+                <button onclick="procesar()" id="procesar">Escuchar</button>
+                    <form action="../Servlet_get_text" method="post" id="prueba">
+                    <div class="form-group">
+                        <textarea id="txt" name="txt-content" style="background: #FFF;"></textarea><br/>
                         N&uacute;mero de elementos:<input type="text" name="num_elementos"/>
                         Nombre del proyecto:<input type="text" name="project_name"/>
                     </div>    
