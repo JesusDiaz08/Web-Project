@@ -24,24 +24,10 @@
                     edit(diagram)
                 }), $("<form action='../ServletGetJSONRTF' method='POST'>")
                                     .append($("<input type='hidden' value='"+diagram.JSON+"' id='vJSON' name='JSON'>"), $("<input type='hidden' value='"+diagram.RTF+"' name='RTF'>"),
-                                           $("<input type='submit' class='btn btn-primary'>")) )
+                                           $("<input type='submit' class='btn btn-primary' value='Mostrar diagrama'>")) )
             ));
             alert(diagram.JSON);
         });
-    }
-
-    function showDiagram(diagram){
-        $.post("..ServletGetJSONRTF", {
-            JSON: diagram.JSON,
-            RTF: diagram.RTF
-        });
-        //$.post("../Servlet_student_diagram", {
-            //JSON: diagram.JSON;
-            //RTF: diagram.RTF;
-            //alert(diagram.JSON);
-            //alert(diagram.RTF);
-            //window.open('../Servlet_student_diagram?JSON='+diagram.JSON+'&RTF='+diagram.RTF);
-        //});
     }
 
     function getActivities() {

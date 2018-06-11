@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package OurServlets;
 
 import java.io.IOException;
@@ -11,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,69 +14,43 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletShowDiagram extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletShowDiagram</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletShowDiagram at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+       throws ServletException, IOException{
+       
+       HttpSession session=request.getSession();
+       String rtf=(String)session.getAttribute("RTF");
+       System.out.println(rtf);
+       String json=(String)session.getAttribute("JSON");
+       System.out.println(json);
+       PrintWriter pw=response.getWriter();
+       pw.println("<!DOCTYPE html>");
+       pw.println("<html>");
+       pw.println("<head>");
+       pw.println("<title>Diagrama</title>");
+       pw.println("<link rel=\"stylesheet\" href='back_end/css/style_diagram.css'>");
+       pw.println("<script src=\"konva.min.js\"></script>");
+       pw.println("<meta charset=\"utf-8\">");
+       pw.println("</head>");
+       pw.println("<body onload='cargar()'>");
+       pw.println(rtf);
+       pw.println("<div id=\"container\"></div>");
+       pw.println("<script>");
+       /*Funcion para deserilizar canvas*/
+       pw.println("function cargar(){var json="+json+"; var stage=Konva.Node.create(json,'container');}");
+       /*Funcion para serializar canvas*/
+        pw.println("function Serializar(){var json=stage.toJSON();document.getElementById('textarea1').value=json;}");
+       pw.println("</script>");
+       pw.println("<textarea name='json' id='textarea1' form='formulario' style='display:none' ></textarea>");
+       pw.println("<form action='Teacher' id='formulario' method='get'>");
+       pw.println("<input class='button b1' value='Regresar' type='submit' onclick='Serializar()'/>");
+       pw.println("</form>");
+                    
+       
+       pw.println("</body>");
+       
+       pw.println("</html>");
+       
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

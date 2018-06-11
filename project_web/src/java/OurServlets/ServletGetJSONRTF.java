@@ -27,7 +27,7 @@ public class ServletGetJSONRTF extends HttpServlet {
         session.setAttribute(JSON, JSON_str);
         System.out.println(RTF_str);
         session.setAttribute(RTF, RTF_str);
-        response.sendRedirect("Servlet_student_diagram");
+        response.sendRedirect("ServletShowDiagram");
     }
 
 }

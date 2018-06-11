@@ -26,7 +26,7 @@ public class Servlet_student_diagram extends HttpServlet {
        
        HttpSession session=request.getSession();
        String rtf=(String)session.getAttribute("RTF");
-        System.out.println(rtf);
+       System.out.println(rtf);
        String json=(String)session.getAttribute("JSON");
        System.out.println(json);
        PrintWriter pw=response.getWriter();

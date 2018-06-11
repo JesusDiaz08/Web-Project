@@ -63,7 +63,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" id="saveEdit">Guardar cambios</button>    
-                </div>
+                </div>  
             </div>
         </div>
     </div>
