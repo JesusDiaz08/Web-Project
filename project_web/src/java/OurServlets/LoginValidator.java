@@ -432,7 +432,7 @@ public class LoginValidator {
                     for(int j = 0; j  < projects.size(); j++){
                         Element project = (Element)projects.get(j);
                         if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
-                            ((Element)(projects.get(j))).removeContent();
+                            ((Element)(users_elements.get(i))).removeContent();
                             System.out.println("Project found");
                             xmlOutputter.output(document, new FileOutputStream(xml_file));
                             return;

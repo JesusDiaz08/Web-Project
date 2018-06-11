@@ -45,9 +45,6 @@
                     </thead>
                     <tbody id='table_body'></tbody>
                 </table>
-                <div>
-                    <button type="button" class="btn btn-primary" id="btnAdd">Añadir</button>
-                </div>
             </div>
         </div>
     </div>
