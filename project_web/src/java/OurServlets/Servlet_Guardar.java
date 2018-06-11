@@ -34,11 +34,16 @@ public class Servlet_Guardar extends HttpServlet {
         LoginValidator validator = new LoginValidator(path);
         String json=request.getParameter("json");
         System.out.println("JSON:***********"+json);
-        validator.addProject(rtf_text, json, user_name, project_name);
         PrintWriter pw=response.getWriter();
         pw.println("<!DOCTYPE html>");
         pw.println("<html>");
         pw.println("<head>");
+        System.out.println(validator.getProject(project_name, user_name));
+        
+         if(validator.getProject(project_name, user_name) == null){
+            validator.addProject(rtf_text, json, user_name, project_name);   
+        }
+        response.sendRedirect("Teacher");
         pw.println("<title>Diagrama</title>");
         pw.println("<link rel=\"stylesheet\" href='back_end/css/style_diagram.css'>");
         pw.println("<script src='konva.min.js'></script>");

@@ -374,15 +374,16 @@ public class LoginValidator {
                 + " user_name = [" + user_name + "]");
         //Probably we cath an exception
         try{
-            //We get the user information
-            Element user_element = getUser(user_name);
             //Now we need to get the info in an specific project
-            List projects = user_element.getChild(PROJECTS).getChildren(PROJECT);
+            List projects = getProjects(user_name);
+            System.out.println(projects);
             for(int i = 0; i < projects.size(); i++){
                 //We get each element
                 Element project = (Element)projects.get(i);
+                System.out.println(project);
                 //We compare the name of the element
-                if(project.getChild(ATTR_NAME_PROJECT).equals(project_name)){
+                if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
+                    System.out.println(">>> I've found the project " + project_name + " of user " + user_name);
                     //If the project exits we can return the data
                     return project;
                 }
