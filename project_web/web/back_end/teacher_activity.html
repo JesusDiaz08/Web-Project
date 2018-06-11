@@ -9,9 +9,19 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../back_end/css/editor.css">
         <link rel="stylesheet" href="../back_end/css/main_admin.css">
+        
 	<script type="text/javascript">
-            $(document).ready(function(){
+            (function ($){
+                "use strict";
+                $(document).ready(function(){
                 $('#txt-content').Editor();
+                
+                function setArea(){
+                    let vas = $('#texto').val();
+                    let habla = $('#txt-content').val(vas);
+                    alert(habla);
+                    $('#txt-content').Editor('setText', [habla]);
+                }
                 
                 $('#btn-enviar').click(function(e){
                     e.preventDefault();
@@ -20,8 +30,62 @@
                     /*var txt = $('#txt-content').Editor('getText');
                     $('#texto').html(txt);*/				
                 });
-            });	
+            });
+            
+            $('#obtenTxt').click(function (){
+                let vas = $('#texto').val();
+                let habla = $('#txt-content').val(vas);
+                alert(habla);
+                $('#txt-content').Editor('setText', [habla]);
+            });
+            
+            })(jQuery);
 	</script>
+        
+        <script type="text/javascript">
+            var recognition;
+            var recognizing = false;
+            if (!('webkitSpeechRecognition' in window)) {
+		alert("¡API no soportada!");
+            } else {
+		recognition = new webkitSpeechRecognition();
+		recognition.lang = "es-MX";
+		recognition.continuous = true;
+		recognition.interimResults = true;
+
+		recognition.onstart = function() {
+			recognizing = true;
+			console.log("empezando a eschucar");
+		}
+		recognition.onresult = function(event) {
+
+		 for (var i = event.resultIndex; i < event.results.length; i++) {
+			if(event.results[i].isFinal)
+				document.getElementById("texto").value += event.results[i][0].transcript;
+		    }
+			
+			//texto
+		}
+		recognition.onerror = function(event) {
+		}
+		recognition.onend = function() {
+			recognizing = false;
+			document.getElementById("procesar").innerHTML = "Escuchar";
+			console.log("terminó de eschucar, llegó a su fin");
+		}
+	}
+	function procesar() {
+		if (recognizing == false) {
+			recognition.start();
+			recognizing = true;
+			document.getElementById("procesar").innerHTML = "Detener";
+		} else {
+			recognition.stop();
+			recognizing = false;
+			document.getElementById("procesar").innerHTML = "Escuchar";
+		}
+	}
+        </script>
 </head>
 <body>
     <div align='right'>
@@ -46,8 +110,12 @@
         <h1>Instrucciones</h1>
         <audio src="teacher_WriteActivity.mp3" autoplay controls ><p>No soporta audio su navegador</p></audio>
         </div>
+        
         <div class="row">
             <div class="col-sm-8">
+                <textarea id="texto"></textarea>
+                <button onclick="procesar()" id="procesar">Escuchar</button>
+                <button onclick="obtenTxt()" id="obtenTxt"></button>
                 <form action="../Servlet_get_text" method="post" id="frm-test">
                     <div class="form-group">
                         <textarea id="txt-content" name="txt-content" style="background: #000;"></textarea><br/>

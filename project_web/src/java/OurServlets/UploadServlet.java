@@ -26,7 +26,9 @@ public class UploadServlet extends HttpServlet
    
       // Check that we have a file upload request
       ServletContext app = request.getServletContext();
-      filePath = app.getRealPath("/"); 
+      filePath = app.getRealPath("/");
+      filePath = filePath.replace("\\build\\", "\\");
+      
       isMultipart = ServletFileUpload.isMultipartContent(request);
       response.setContentType("text/html");
       java.io.PrintWriter out = response.getWriter( );
