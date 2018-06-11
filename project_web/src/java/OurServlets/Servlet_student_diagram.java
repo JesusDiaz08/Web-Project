@@ -21,7 +21,7 @@ import org.jdom.output.XMLOutputter;
 public class Servlet_student_diagram extends HttpServlet {
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
        
        HttpSession session=request.getSession();

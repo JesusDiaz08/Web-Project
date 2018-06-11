@@ -104,6 +104,14 @@
         <servlet-name>Servlet_Guardar</servlet-name>
         <servlet-class>OurServlets.Servlet_Guardar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Servlet_getStudents</servlet-name>
+        <servlet-class>OurServlets.Servlet_getStudents</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Servlet_addStudentGroup</servlet-name>
+        <servlet-class>OurServlets.Servlet_addStudentGroup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>Servlet_Guardar</servlet-name>
         <url-pattern>/Servlet_Guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_getStudents</servlet-name>
+        <url-pattern>/Servlet_getStudents</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Servlet_addStudentGroup</servlet-name>
+        <url-pattern>/Servlet_addStudentGroup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

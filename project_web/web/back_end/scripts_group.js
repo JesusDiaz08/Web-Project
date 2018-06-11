@@ -48,6 +48,29 @@
             ));
         });
     }
+    
+       function getStudents(students) {
+        $("#table_students > tbody").empty();
+        students.forEach(function (student) {
+            $("#table_students > tbody").append($("<tr>")
+                .append($("<td>", {
+                    text: student.id_user
+                }), $("<td>").append($("<input type='checkbox'>", {
+                    class: 'btn btn-danger mr-2',
+                    text: 'Agregar/Eliminar'
+                }).click(function () {
+                    remove(user)
+                })
+            )));
+        });
+    }
+      function getStd() {
+        $.post("../Servlet_getStudents",
+            function (data) {
+                let students = JSON.parse(data);
+                    getStudents(students);
+            });
+    }
 
     function getActivities() {
         $.get("../ServletGetGroups",
@@ -67,6 +90,7 @@
     }
 
     function edit(group) {
+        getStd();
         $("#editModal").modal({
             keyboard: false
         });
@@ -81,6 +105,7 @@
                 getActivities();
             });
         });
+        
     }
     
     getActivities();
