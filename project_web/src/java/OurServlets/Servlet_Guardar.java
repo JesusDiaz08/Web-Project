@@ -41,15 +41,28 @@ public class Servlet_Guardar extends HttpServlet {
         System.out.println(validator.getProject(project_name, user_name));
         
          if(validator.getProject(project_name, user_name) == null){
+            pw.println("<script type='text/javascript'>");
+                pw.println("function showDialog(){");
+                    pw.println("alert('Se ha creado el proyecto " + project_name + "');");
+                pw.println("}");
+                pw.println("showDialog();");
+            pw.println("</script>");
             validator.addProject(rtf_text, json, user_name, project_name);   
+        } else {
+             pw.println("<script type='text/javascript'>");
+                pw.println("function showDialog(){");
+                    pw.println("alert('El proyecto " + project_name + " ya existe');");
+                pw.println("}");
+                pw.println("showDialog();");
+            pw.println("</script>");
         }
-        response.sendRedirect("Teacher");
         pw.println("<title>Diagrama</title>");
         pw.println("<link rel=\"stylesheet\" href='back_end/css/style_diagram.css'>");
         pw.println("<script src='konva.min.js'></script>");
         pw.println("<meta charset=\"utf-8\">");
         pw.println("</head>");
         pw.println("<body> ");
+            pw.println("<a href='Teacher'>Volver al menu principal</a>");
         pw.println("</body>");
        
         pw.println("</html>");
