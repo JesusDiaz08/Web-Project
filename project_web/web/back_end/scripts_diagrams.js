@@ -22,18 +22,26 @@
                     text: 'Editar'
                 }).click(function () {
                     edit(diagram)
-                }), $("<button>", {
-                    class: 'btn btn-primary',
-                    text: 'Ver diagrama'
-                }).click(function(){
-                    showDiagram(diagram)         
-                }))
+                }), $("<form action='../ServletGetJSONRTF' method='POST'>")
+                                    .append($("<input type='hidden' value='"+diagram.JSON+"' id='vJSON' name='JSON'>"), $("<input type='hidden' value='"+diagram.RTF+"' name='RTF'>"),
+                                           $("<input type='submit' class='btn btn-primary'>")) )
             ));
+            alert(diagram.JSON);
         });
     }
 
     function showDiagram(diagram){
-        
+        $.post("..ServletGetJSONRTF", {
+            JSON: diagram.JSON,
+            RTF: diagram.RTF
+        });
+        //$.post("../Servlet_student_diagram", {
+            //JSON: diagram.JSON;
+            //RTF: diagram.RTF;
+            //alert(diagram.JSON);
+            //alert(diagram.RTF);
+            //window.open('../Servlet_student_diagram?JSON='+diagram.JSON+'&RTF='+diagram.RTF);
+        //});
     }
 
     function getActivities() {
@@ -53,7 +61,7 @@
             nameProject: diagram.nameProject,
             name_user: $("#idNameUser").val()
         }, function () {
-            //alert("getActivities");
+            alert("getActivities");
             getActivities();
         });
         

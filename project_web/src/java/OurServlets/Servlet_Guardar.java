@@ -38,7 +38,6 @@ public class Servlet_Guardar extends HttpServlet {
         pw.println("<!DOCTYPE html>");
         pw.println("<html>");
         pw.println("<head>");
-        System.out.println(validator.getProject(project_name, user_name));
         
          if(validator.getProject(project_name, user_name) == null){
             pw.println("<script type='text/javascript'>");
