@@ -116,6 +116,14 @@
         <servlet-name>ServletGetJSONRTF</servlet-name>
         <servlet-class>OurServlets.ServletGetJSONRTF</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletShowDiagram</servlet-name>
+        <servlet-class>OurServlets.ServletShowDiagram</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletModifyDiagramTeacher</servlet-name>
+        <servlet-class>OurServlets.ServletModifyDiagramTeacher</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -231,6 +239,14 @@
     <servlet-mapping>
         <servlet-name>ServletGetJSONRTF</servlet-name>
         <url-pattern>/ServletGetJSONRTF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletShowDiagram</servlet-name>
+        <url-pattern>/ServletShowDiagram</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifyDiagramTeacher</servlet-name>
+        <url-pattern>/ServletModifyDiagramTeacher</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
