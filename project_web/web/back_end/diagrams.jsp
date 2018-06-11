@@ -24,7 +24,7 @@
     </div>
     
     <div align="center">
-        <h1 align="center">Profesor</h1>
+        <h1 align="center">Profesor</h1>    
     </div>
     <div class="container">
         <div class='row'>

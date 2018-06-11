@@ -25,10 +25,11 @@ public class ServletGetDiagrams extends HttpServlet {
         System.out.println("OurServlets.ServletGetDiagrams.doGet()");
         String path = request.getServletContext().getRealPath("\\xml_code\\storage.xml");
         path = path.replace("\\build\\", "\\");
-        String name = request.getParameter("user_name");
+        String name = request.getParameter("name_user");
         System.out.println(">>> " + path);
         LoginValidator validator = new LoginValidator(path);
         List diagrams = validator.getProjects(name);
+        System.out.println(diagrams);
         JSONArray jsonArray = new JSONArray();
         for(int i = 0; i < diagrams.size(); i++){
             Element diagram = (Element)diagrams.get(i);

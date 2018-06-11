@@ -37,7 +37,12 @@
     <name>Ruben</name>
     <last_name>Peredo</last_name>
     <password>1234</password>
-    <projects />
+    <projects>
+        <project nameProject="Proyecto01">
+            <JSON>{a:ef}{a:ce}{q:ve}</JSON>
+            <RTF>fvrw13rwcvr2r4fas</RTF>
+        </project>
+    </projects>
   </user>
 </users>
 

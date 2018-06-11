@@ -39,7 +39,7 @@
     }
     
     function alertUser(){
-        alert($("#idNameUser").val);
+        alert($("#idNameUser").val())
     }
 
     function getActivities() {
@@ -78,6 +78,6 @@
     }
     
     getActivities();
-    alertUser();
+    alertUser();    
 
 })(jQuery);

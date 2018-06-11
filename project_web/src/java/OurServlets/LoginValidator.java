@@ -394,7 +394,7 @@ public class LoginValidator {
     }
     
     public List getProjects(String user){
-        System.out.println("OurServlets.LoginValidator.getProjects()");
+        System.out.println("OurServlets.LoginValidator.getProjects() user = [" + user + "]");
         //Probably we catch an exception
         try{
             Element user_element = getUser(user);
