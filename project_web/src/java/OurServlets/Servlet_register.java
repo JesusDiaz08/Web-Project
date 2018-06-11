@@ -24,6 +24,7 @@ public class Servlet_register extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter write = response.getWriter();
         String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
+        path = path.replace("\\build\\", "\\");
         System.out.println("--->>"+path);
         
         File file = new File(path);
