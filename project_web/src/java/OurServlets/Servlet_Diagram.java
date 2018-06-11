@@ -31,6 +31,7 @@ public class Servlet_Diagram extends HttpServlet {
        String imagen=request.getParameter("img");
         System.out.println("Imagen:"+imagen);
        PrintWriter pw=response.getWriter();
+       
        pw.println("<!DOCTYPE html>");
        pw.println("<html>");
        pw.println("<head>");
@@ -40,6 +41,8 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("<meta charset=\"utf-8\">");
        pw.println("</head>");
        pw.println("<body> ");
+       /*Insertar texto que ingresa el profesor*/
+       pw.println(texto);
        pw.println("<div id=\"container\"></div>");
        pw.println("<script>");
        pw.println("function writeMessage(message) {\n" +
@@ -54,15 +57,7 @@ public class Servlet_Diagram extends HttpServlet {
                     "        height: height\n" +
                     "    });"); 
        pw.println(" var layer = new Konva.Layer();");
-       /*Insertar texto que ingresa el profesor*/
-       pw.println("var text = new Konva.Text({\n" +
-"        x: 10,\n" +
-"        y: 10,\n" +
-"        fontFamily: 'Calibri',\n" +
-"        fontSize: 24,\n" +
-"        text: 'texto',\n" +
-"        fill: 'black'\n" +
-"    });");
+       
        
        Integer x=10,y=200;
         for (int i = 0; i < elementos; i++) {
@@ -106,7 +101,7 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("layer.add(imagen);");
        pw.println("stage.add(layer);");
        pw.println("};");
-       pw.println("layer.add(text);");
+       
        pw.println("imageObj.src='"+imagen+"';");
        /*Funcion para serializar*/
        pw.println("function Serializar(){var json=stage.toJSON();document.getElementById('textarea1').value=json;}");
