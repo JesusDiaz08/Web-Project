@@ -9,15 +9,10 @@
 
     function fillTable(groups) {
         $("#table_groups > tbody").empty();
-        users.forEach(function (group) {
-            $("#table_groups > tbody").append($("<tr>").append($("<td>", {
-                    text: user.id_user
-                }), $("<td>", {
-                    text: user.name
-                }), $("<td>", {
-                    text: user.id_email
-                }), $("<td>", {
-                    text: user.type_user
+        groups.forEach(function (group) {
+            $("#table_groups > tbody").append($("<tr>")
+                .append($("<td>", {
+                    text: group.nombre_gpo
                 }), $("<td>").append($("<button>", {
                     class: 'btn btn-danger mr-2',
                     text: 'Eliminar'
@@ -44,7 +39,7 @@
     
 
     function remove(group) {
-        $.get("../ServletDropGroup", {
+        $.get("../ServletDropGroups", {
             name: group.name
         }, function () {
             getActivities();
@@ -55,13 +50,13 @@
         $("#editModal").modal({
             keyboard: false
         });
-        $("#Name").val(group.name);
+        $("#Name").val(group.nombre_gpo);
 
         $("#saveEdit").click(function () {
             $("#editModal").modal("toggle");
-            $.post("../ServletEditGroup", {
-                name: group.name,
-                name: $("#NameEdit").val(),
+            $.post("../ServletEditGroups", {
+                nombre_gpo: group.nombre_gpo,
+                nombre_gpo: $("#NameEdit").val(),
             }, function () {
                 getActivities();
             });
