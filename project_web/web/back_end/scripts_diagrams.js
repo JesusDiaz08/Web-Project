@@ -37,10 +37,6 @@
     function showDiagram(diagram){
         
     }
-    
-    function alertUser(){
-        alert($("#idNameUser").val())
-    }
 
     function getActivities() {
         $.get("../ServletGetDiagrams", {
@@ -54,7 +50,8 @@
 
     function remove(diagram) {
         $.get("../ServletDropDiagrams", {
-            nameProject: diagrams.nameProject
+            nameProject: diagrams.nameProject,
+            name_user: $("#idNameUser").val()
         }, function () {
             getActivities();
         });
@@ -78,6 +75,5 @@
     }
     
     getActivities();
-    alertUser();    
 
 })(jQuery);

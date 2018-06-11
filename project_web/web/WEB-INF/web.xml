@@ -96,6 +96,10 @@
         <servlet-name>ServletGetDiagrams</servlet-name>
         <servlet-class>OurServlets.ServletGetDiagrams</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletDropDiagrams</servlet-name>
+        <servlet-class>OurServlets.ServletDropDiagrams</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>ServletGetDiagrams</servlet-name>
         <url-pattern>/ServletGetDiagrams</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDropDiagrams</servlet-name>
+        <url-pattern>/ServletDropDiagrams</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
