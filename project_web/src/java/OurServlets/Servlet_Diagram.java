@@ -124,12 +124,20 @@ public class Servlet_Diagram extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
        throws ServletException, IOException{
        
+       String path = request.getServletContext().getRealPath("/xml_code/storage.xml"); 
+       LoginValidator validate = new LoginValidator(path);  /*se guardará en el xml de storage.xml*/
        HttpSession session=request.getSession();
        
+       /*Recuperamos la sesión de los datos enviados del Servlet_get_text*/
        Integer elementos=Integer.parseInt(String.valueOf(session.getAttribute("num_elementos")));
        String texto=String.valueOf(session.getAttribute("texto"));
+       String actualUser = String.valueOf(session.getAttribute("actualUser"));
+       /*---------------------------------------------------------------*/
        String imagen=request.getParameter("img");
         System.out.println("Imagen:"+imagen);
+        
+        validate.isRTF_saved(texto,actualUser);/*Se va a recuperar el texto enriquecido para agregarlo al xml*/
+       
        PrintWriter pw=response.getWriter();
        pw.println("<!DOCTYPE html>");
        pw.println("<html>");
@@ -139,16 +147,21 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("<script src=\"fabric.min.js\"></script>");
        pw.println("</head>");
        pw.println("<body> ");
+       pw.println("<div style='margin-left:300px;"
+                             +"margin-right:300px;"
+                             +"margin-top: 50px;'>");
        Integer left=50,top=400;
        pw.println("<p width='"+300*elementos+"' height='600'>");
-        pw.println(texto);
+       pw.println(texto);
        pw.println("</p>");
        
-       pw.println("<canvas id='mcanvas' width='"+300*elementos+"' height='600'></canvas>");
+       pw.println("<div>");
+       pw.println("<canvas id='mcanvas' width='"+300*elementos+"' height='650'></canvas>");
+       pw.println("</div>");
        pw.println("<script type=\"text/javascript\">");
        pw.println("var canvas = new fabric.Canvas('mcanvas');");
        
-       pw.println("var text=new fabric.Text(' ',{left:300,top:10,fontSize:14});");
+       pw.println("var text=new fabric.Text(' ',{left:300,top:10,fontSize:14});"); /*es solo para dar espacio*/
        pw.println("canvas.add(text);");
        pw.println("text.set('selectable',false);");
         for (int i = 0; i < elementos; i++) {
@@ -182,7 +195,7 @@ public class Servlet_Diagram extends HttpServlet {
        pw.println("</script>");
        pw.println("<input class='button b1' type='button' value='Guardar diagrama' onclick='myFunction();'/>");
        pw.println("<textarea id='textarea1'></textarea>");
-       
+       pw.println("</div>");
        pw.println("</body>");
        
        pw.println("</html>");

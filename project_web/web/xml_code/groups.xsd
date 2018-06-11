@@ -6,7 +6,6 @@
                 <xs:element name="grupo" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType mixed="true">
                         <xs:all>
-                            <xs:element name="turno_gpo" type="xs:string"/>
                             <xs:element name="nombre_gpo" type="xs:string"/>
                         </xs:all>
                     </xs:complexType>

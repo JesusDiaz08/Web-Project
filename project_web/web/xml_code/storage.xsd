@@ -12,10 +12,19 @@
                             <xs:element name="projects" minOccurs="0">
                                 <xs:complexType mixed="true">
                                     <xs:sequence>
-                                        <xs:element name="project" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xs:element name="project" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType mixed="true">
+                                                <xs:sequence>
+                                                    <xs:element name="RTF" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                                    <xs:element name="JSON" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="nameProject" type="xs:string" use="required"/>
+                                            </xs:complexType>					
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
+                            <xs:element name="grupo" type="xs:string"/>
                         </xs:all>
                         <xs:attribute name="type_user" type="xs:string" use="required"/>
                         <xs:attribute name="id_email" type="xs:string" use="required"/>

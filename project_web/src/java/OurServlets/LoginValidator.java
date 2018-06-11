@@ -325,5 +325,15 @@ public class LoginValidator {
         }
         return null;
     }
+    
+    public void isRTF_saved(String RTF, String user){
+        System.out.println("User actual: "+user);
+        System.out.println("My RTF is: ");
+        System.out.println("->"+RTF);
+    }
+    
+    public void isJSON_saved(){
+        
+    }
 
 }

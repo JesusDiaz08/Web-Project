@@ -32,7 +32,7 @@ public class Teacher extends HttpServlet {
         HttpSession UpDownLoad = request.getSession();
         UpDownLoad.setAttribute("repo_teacher",str_user); /*Se usará para crear una carpeta con el nombre del profesor
                                                             en donde se almacenarán sus subidas de archivos*/
-        
+        System.out.println("ESTOY EN TEACHER: "+str_user);
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");

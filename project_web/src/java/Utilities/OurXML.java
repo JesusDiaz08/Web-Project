@@ -21,6 +21,9 @@ public class OurXML {
     public static final String ATTR_EMAIL = "id_email";
     public static final String PROJECTS = "projects";
     public static final String PROJECT = "project";
+    public static final String ATTR_NAME_PROJECT = "nameProject";
+    public static final String RTF = "RTF";
+    public static final String JSON = "JSON";
     public static final String ATTR_TYPE_USER = "type_user";
     public static final String ADMINISTRATOR = "administrator";
     public static final String TEACHER = "teacher";

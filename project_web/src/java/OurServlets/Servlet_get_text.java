@@ -26,7 +26,7 @@ public class Servlet_get_text extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");
-                out.println("<title>Servlet get text</title>");
+                out.println("<title>Asignar actividad</title>");
             out.println("</head>");
             
             out.println("<body>");
@@ -50,14 +50,22 @@ public class Servlet_get_text extends HttpServlet {
         Integer n=Integer.parseInt(request.getParameter("num_elementos"));
         String texto=request.getParameter("txt-content");
         HttpSession session = request.getSession();
-        session.setAttribute("num_elementos", String.valueOf(n));
-        session.setAttribute("texto",texto);
+        String actual_user = String.valueOf(session.getAttribute("repo_teacher"));
         
+        /*Recuperamos los valores necesarias y los subimos a sesión*/
+        session.setAttribute("num_elementos", String.valueOf(n));/*Numero de elementos*/
+        session.setAttribute("texto",texto);
+        session.setAttribute("actualUser",actual_user);
+        /*----------------------------------------------------------*/
+        System.out.println("|---------");
+        System.out.println("| Sesion actual: "+actual_user);
+        System.out.println("|---------");
+        session.setAttribute("num_elementos", String.valueOf(n));
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");
-                out.println("<title>Servlet get text</title>");
+                out.println("<title>Asignar actividad</title>");
             out.println("</head>");
             System.out.println("Texto: "+texto);
             out.println("<body>");

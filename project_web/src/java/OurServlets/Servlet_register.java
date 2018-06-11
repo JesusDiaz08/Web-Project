@@ -118,7 +118,9 @@ public class Servlet_register extends HttpServlet {
         element.addContent(new Element(NAME).setText(user.getName()));
         element.addContent(new Element(LAST_NAME).setText(user.getLast_name()));
         element.addContent(new Element(PASSWORD).setText(user.getPassword()));
-        element.addContent(new Element(PROJECTS).setText("algo"));
+        if (!user.getType_user().equals(ADMINISTRATOR)) 
+            element.addContent(new Element(PROJECTS).addContent(new Element(PROJECT).setText("ProjectTest")));
+        
         return element;
     }
 }
