@@ -38,10 +38,7 @@
     <last_name>Peredo</last_name>
     <password>1234</password>
     <projects>
-      <project nameProject="MiProyecto">
-        <RTF>Hola mundo&lt;br&gt;</RTF>
-        <JSON>{"attrs":{"width":1536,"height":750},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":10,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":18,"y":394,"draggable":true},"className":"Group","children":[{"attrs":{"x":10,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":20,"y":210,"fill":"white","text":"Hola"},"className":"Text"}]},{"attrs":{"x":260,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"y":399,"draggable":true},"className":"Group","children":[{"attrs":{"x":260,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":270,"y":210,"fill":"white","text":"Mundo"},"className":"Text"}]},{"attrs":{"x":500,"y":50,"width":106,"height":118},"className":"Image"}]}]}</JSON>
-      </project>
+      <project nameProject="MiProyecto" />
     </projects>
   </user>
 </users>

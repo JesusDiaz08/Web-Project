@@ -8,11 +8,9 @@
     });
 
     function fillTable(diagrams) {
-        $("#table_users > tbody").empty();
+        $("#table_diagrams > tbody").empty();
         diagrams.forEach(function (diagram) {
-            $("#table_users > tbody").append($("<tr>").append($("<td>", {
-                    text: diagram.nme_diagram
-                }), $("<td>", {
+            $("#table_diagrams > tbody").append($("<tr>").append($("<td>", {
                     text: diagram.nameProject
                 }), $("<td>").append($("<button>", {
                     class: 'btn btn-danger mr-2',
@@ -28,7 +26,7 @@
                     class: 'btn btn-primary',
                     text: 'Ver diagrama'
                 }).click(function(){
-                    showDiagram(diagram);         
+                    showDiagram(diagram)         
                 }))
             ));
         });
@@ -40,7 +38,7 @@
 
     function getActivities() {
         $.get("../ServletGetDiagrams", {
-            name_user: $("#idNameUser").val(),
+            name_user: $("#idNameUser").val()
         }, function (data) {
             let diagrams = JSON.parse(data);
             fillTable(diagrams);
@@ -49,12 +47,16 @@
     
 
     function remove(diagram) {
+        
+        //alert("BTN pressed");
         $.get("../ServletDropDiagrams", {
-            nameProject: diagrams.nameProject,
+            nameProject: diagram.nameProject,
             name_user: $("#idNameUser").val()
         }, function () {
+            //alert("getActivities");
             getActivities();
         });
+        
     }
 
     function edit(diagram) {

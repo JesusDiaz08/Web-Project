@@ -29,7 +29,7 @@
     <div class="container">
         <div class='row'>
             <div class="col-ms-12 mt-5">
-                <table class="table" id="table_users">
+                <table class="table" id="table_diagrams">
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
