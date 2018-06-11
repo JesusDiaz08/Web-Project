@@ -2,8 +2,8 @@
 
     'use strict';
 
-    $("#btnAdd").click(function(){
-        pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');
+    $("#btnAdd").click(function () {
+        pop_ventana = window.open('registro.html', 'Registrar usuario', 'width=400,height=650');
         getActivities();
     });
 
@@ -11,22 +11,18 @@
         $("#table_diagrams > tbody").empty();
         diagrams.forEach(function (diagram) {
             $("#table_diagrams > tbody").append($("<tr>").append($("<td>", {
-                    text: diagram.nameProject
-                }), $("<td>").append($("<button>", {
+                text: diagram.nameProject
+            }), $("<td>").append($("<button>", {
                     class: 'btn btn-danger mr-2',
                     text: 'Eliminar'
                 }).click(function () {
                     remove(diagram)
-                }), $("<button>", {
-                    class: 'btn btn-warning',
-                    text: 'Editar'
-                }).click(function () {
-                    edit(diagram)
-                }), $("<form action='../ServletGetJSONRTF' method='POST'>")
-                                    .append($("<input type='hidden' value='"+diagram.JSON+"' id='vJSON' name='JSON'>"), $("<input type='hidden' value='"+diagram.RTF+"' name='RTF'>"),
-                                           $("<input type='submit' class='btn btn-primary' value='Mostrar diagrama'>")) )
-            ));
-            alert(diagram.JSON);
+                }), $("<form action='../ServletSessionModifyDiagram' method='POST'>")
+                .append($("<input type='hidden' value='" + diagram.JSON + "' id='vJSON' name='JSON'>"), $("<input type='hidden' value='" + diagram.RTF + "' name='RTF'>"),
+                    $("<input type='submit' class='btn btn-warning' value='Editar diagrama'>")), $("<form action='../ServletGetJSONRTF' method='POST'>")
+                .append($("<input type='hidden' value='" + diagram.JSON + "' id='vJSON' name='JSON'>"), $("<input type='hidden' value='" + diagram.RTF + "' name='RTF'>"),
+                    $("<input type='submit' class='btn btn-primary' value='Mostrar diagrama'>")))));
+            //alert(diagram.JSON);
         });
     }
 
@@ -38,19 +34,19 @@
             fillTable(diagrams);
         });
     }
-    
+
 
     function remove(diagram) {
-        
+
         //alert("BTN pressed");
         $.get("../ServletDropDiagrams", {
             nameProject: diagram.nameProject,
             name_user: $("#idNameUser").val()
         }, function () {
-            alert("getActivities");
+            //alert("getActivities");
             getActivities();
         });
-        
+
     }
 
     function edit(diagram) {
@@ -69,7 +65,7 @@
             });
         });
     }
-    
+
     getActivities();
 
 })(jQuery);

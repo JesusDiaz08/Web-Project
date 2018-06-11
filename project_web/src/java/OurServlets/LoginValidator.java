@@ -444,5 +444,41 @@ public class LoginValidator {
             System.err.println("An exception has occurred in LoginValidator.dropProject" + e);
         }
     }
+    
+    public void updateProject(String user, String project_name){
+        System.out.println("OurServlets.LoginValidator.upateProject() user = [" + user + "] "
+                + " project_name = [" + project_name + "]");
+        SAXBuilder saxBuilder = new SAXBuilder();
+        File xml_file = new File(path_XML);
+        //Probably we catch an exception
+        try{
+            
+            System.out.println("Try clause");
+            XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+            Document document = saxBuilder.build(xml_file);
+            Element root = document.getRootElement();
+            List users_elements = root.getChildren();
+            for(int i = 0; i < users_elements.size(); i++){
+                System.out.println("users " + users_elements.toString());
+                
+                Element user_element = (Element)users_elements.get(i);
+               
+                if(user_element.getAttributeValue(ATTR_USER_NAME).equals(user)){
+                    List projects = user_element.getChild(PROJECTS).getChildren();
+                    for(int j = 0; j  < projects.size(); j++){
+                        Element project = (Element)projects.get(j);
+                        if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
+                            ((Element)(projects.get(j))).removeContent();
+                            System.out.println("Project found");
+                            xmlOutputter.output(document, new FileOutputStream(xml_file));
+                            return;
+                        }
+                    }
+                }
+            }
+        } catch(Exception e){
+            System.err.println("An exception has occurred in LoginValidator.dropProject" + e);
+        }
+    }
 
 }
