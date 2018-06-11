@@ -53,7 +53,8 @@ public class Administrador extends HttpServlet {
                 out.println("<a href='back_end/log_in.html' target = '_top'> SIGN OUT </a>");
                 out.println("</nav></div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
-                    out.println("<a href='back_end/admin.html' id='user'>Usuarios</a>");
+                    out.println("<a href='back_end/administrator.html' id='user'>Usuarios</a>");
+                    out.println("<a href='back_end/groups.html' id='groups'>Grupos</a>");
                 out.println("</div>");
                 out.println("<div style='margin-left:130px;'>");
                     out.println("<h2>Bienvenido Administrador: "+userName+"</h2>");
