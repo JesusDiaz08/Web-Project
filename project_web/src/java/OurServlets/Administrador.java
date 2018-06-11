@@ -56,7 +56,7 @@ public class Administrador extends HttpServlet {
                     out.println("<a href='back_end/administrator.html' id='user'>Usuarios</a>");
                 out.println("</div>");
                 out.println("<br/>\n" +
-                        "<div id=\"group\" class=\"sidenav\">\n" +
+                        "<div id='mySidenav' class=\"sidenav\">\n" +
                         "<a href='back_end/groups.html' id=\"group\">Grupos</a>\n" +
                         "</div>");
                 out.println("<div style='margin-left:130px;'>");
