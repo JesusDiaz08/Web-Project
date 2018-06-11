@@ -1,6 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Administrator</title>
@@ -15,7 +15,7 @@
             <a href="log_in.html" style="margin-right: 10px;" target="_top">Sign out</a>
         </div>
     </header>
-    
+    <input type="hidden" id="idNameUser" value="<%= session.getAttribute("repo_teacher") %>"/>
     <div id="mySidenav" class="sidenav">
         <a href="administrator.html" id="user">Usuarios</a>
     </div>
@@ -24,7 +24,7 @@
     </div>
     
     <div align="center">
-        <h1 align="center">ADMINISTRADOR</h1>
+        <h1 align="center">Profesor</h1>
     </div>
     <div class="container">
         <div class='row'>
@@ -32,11 +32,8 @@
                 <table class="table" id="table_users">
                     <thead>
                         <tr>
-                            <th scope="col">USUARIO</th>
-                            <th scope="col">NOMBRE</th>
-                            <th scope="col">E-MAIL</th>
-                            <th scope="col">TIPO</th>
-                            <th colspan="3">ACCIÓN</th>
+                            <th scope="col">Nombre</th>
+                            <th colspan="3">ACCIONES</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -59,22 +56,8 @@
                 </div>
                 <div class="modal-body">
                     <form class="form">
-                        <label class="sr-only" for="usuario" >Usuario</label>
-                        <input type="text" class="form-control mb-2 mr-sm-2" id="UserEdit" placeholder="Usuario" disabled="disabled"/>
                         <label class="sr-only" for="nombre">Nombre</label>
                         <input type="text" class="form-control md-2 mr-sm-2" id="NameEdit" placeholder="Nombre"/>
-                        <label class="sr-only" for=lastname>Apellido</label>
-                        <input type="text" class="form-control md-2 mr-sm-2" id="LastNameEdit" placeholder="Apellido"/>
-                        <label class="sr-only" for="email">E-MAIL</label>
-                        <input type="email" class="form-control md-2 mr-sm-2" id="EmailEdit" placeholder="E-MAIL" disabled="disabled"/>
-                        <label class="sr-only" for="password">Contraseña</label>
-                        <input type="password" class="form-control md-2 mr-sm-2" id="PasswordEdit" placeholder="Contraseña"/>
-                        <label class="sr-only" for="tipo">Tipo</label>
-                        <select name="type_user" required class="form-control ms-2 mr-sm-2" id="TypeEdit">    
-                            <option value="student">Alumno</option>
-                            <option value="teacher">Profesor</option>
-                            <option value="administrator">Administrador</option>
-                        </select>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -87,7 +70,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="scripts_diagrams.js"></script>
 </body>
 
 </html>

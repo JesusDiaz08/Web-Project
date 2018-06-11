@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="storage.xsd">
   <user type_user="administrator" id_email="erick_thod@hotmail.com" id_user="eerick1997">
-    <name>Erick</name>
+    <name>Efrain</name>
     <last_name>Vargas</last_name>
     <password>eerick1997977</password>
     <projects>
+        <project nameProject="Proyecto01">
+            <JSON>{a:ef}{a:ce}{q:ve}</JSON>
+            <RTF>fvrw13rwcvr2r4fas</RTF>
+        </project>
     </projects>
   </user>
   <user type_user="administrator" id_email="jesuskai@gmail.com" id_user="Kaimorts">
@@ -29,11 +33,11 @@
     <password>jdsjdsnjsd</password>
     <projects>algo</projects>
   </user>
-  <user type_user="teacher" id_email="manudo@hotmail.com" id_user="Roberto">
-    <name>Roberto</name>
-    <last_name>Dorantes</last_name>
-    <password>robert</password>
-    <projects>algo</projects>
+  <user type_user="teacher" id_email="ruben.peredo@gmail.com" id_user="Pruben">
+    <name>Ruben</name>
+    <last_name>Peredo</last_name>
+    <password>1234</password>
+    <projects />
   </user>
 </users>
 

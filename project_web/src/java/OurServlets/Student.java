@@ -27,9 +27,10 @@ public class Student extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String path = request.getServletContext().getRealPath("/xml_code/storage.xml");
+        path = path.replace("\\build\\", "\\");
         HttpSession session = request.getSession();
         String str_user = String.valueOf(session.getAttribute("attr_user"));
-        
+        LoginValidator validator  =new LoginValidator(path);
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");

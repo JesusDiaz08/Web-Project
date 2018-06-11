@@ -92,6 +92,10 @@
         <servlet-name>ServletEditGroups</servlet-name>
         <servlet-class>OurServlets.ServletEditGroups</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletGetDiagrams</servlet-name>
+        <servlet-class>OurServlets.ServletGetDiagrams</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>ServletEditGroups</servlet-name>
         <url-pattern>/ServletEditGroups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGetDiagrams</servlet-name>
+        <url-pattern>/ServletGetDiagrams</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

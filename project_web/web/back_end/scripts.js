@@ -32,29 +32,6 @@
             ));
         });
     }
-    
-    function fillTableGroup(users) {
-        $("#table_groups > tbody").empty();
-        users.forEach(function (user) {
-            $("#table_groups > tbody").append($("<tr>").append($("<td>", {
-                    text: user.id_user
-                }), $("<td>", {
-                    text: user.name
-                }), $("<td>").append($("<button>", {
-                    class: 'btn btn-danger mr-2',
-                    text: 'Eliminar'
-                }).click(function () {
-                    remove(user)
-                }), $("<button>", {
-                    class: 'btn btn-warning',
-                    text: 'Editar'
-                }).click(function () {
-                    edit(user)
-                }))
-            ));
-        });
-    }
-    
 
 
     function getActivities() {
@@ -64,6 +41,7 @@
                 fillTable(users);
             });
     }
+    
 
     function remove(user) {
         $.get("../ServletDropUser", {

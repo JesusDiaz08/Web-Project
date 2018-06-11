@@ -125,7 +125,7 @@ public class LoginValidator {
             List user_element_list = root_element.getChildren(USER);
             for (int i = 0; i < user_element_list.size(); i++) {
                 Element user_element = (Element) user_element_list.get(i);
-                if (user_element.getAttributeValue(ATTR_EMAIL).equals(id)
+                if (user_element.getAttributeValue(ATTR_USER_NAME).equals(id)
                         || // the user_name is the same as the @param so we return an Element
                         user_element.getAttributeValue(ATTR_USER_NAME).equals(id)) {
                     System.out.println("I've found: " + id);
@@ -389,6 +389,21 @@ public class LoginValidator {
             }
         }catch(Exception e){
             System.err.println("An exception has occurred in LoginValidator.getProject() " + e);
+        }
+        return null;
+    }
+    
+    public List getProjects(String user){
+        System.out.println("OurServlets.LoginValidator.getProjects()");
+        //Probably we catch an exception
+        try{
+            Element user_element = getUser(user);
+            Element user_projects = user_element.getChild(PROJECTS);
+            System.out.println("user projects : " + user_projects);
+            System.out.println("List projects: " + user_projects.getChildren());
+            return user_projects.getChildren();
+        }catch(Exception e){
+            System.err.println("An exception has occurred in LoginValidator.getProjects " + e);
         }
         return null;
     }

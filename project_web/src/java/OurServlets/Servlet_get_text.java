@@ -68,7 +68,7 @@ public class Servlet_get_text extends HttpServlet {
             out.println("</head>");
             System.out.println("Texto: "+texto);
             out.println("<body>");
-                out.println("<form action='Servlet_Diagram' method='post'>");
+                out.println("<form action='Servlet_Diagram' method='GET'>");
                     for(int i = 0; i < n; i++)
                         out.println("Ingrese texto: <input type='text' name='txt"+i+"'/><br/>");
                     out.println("Imagen:<input type='text' name='img'/>");

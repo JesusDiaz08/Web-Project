@@ -60,7 +60,7 @@ public class Servlet_Diagram extends HttpServlet {
 "        y: 10,\n" +
 "        fontFamily: 'Calibri',\n" +
 "        fontSize: 24,\n" +
-"        text: '"+texto+"',\n" +
+"        text: 'hola',\n" +
 "        fill: 'black'\n" +
 "    });");
        
