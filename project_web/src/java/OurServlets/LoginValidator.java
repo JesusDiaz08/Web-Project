@@ -432,7 +432,8 @@ public class LoginValidator {
                     for(int j = 0; j  < projects.size(); j++){
                         Element project = (Element)projects.get(j);
                         if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
-                            ((Element)(users_elements.get(i))).removeContent();
+                            //((Element)(projects.get(j))).removeContent();
+                            projects.remove(j);
                             System.out.println("Project found");
                             xmlOutputter.output(document, new FileOutputStream(xml_file));
                             return;
@@ -445,14 +446,13 @@ public class LoginValidator {
         }
     }
     
-    public void updateProject(String user, String project_name){
+    public void updateProject(String RTF_value, String JSON_value, String user, String project_name){
         System.out.println("OurServlets.LoginValidator.upateProject() user = [" + user + "] "
                 + " project_name = [" + project_name + "]");
         SAXBuilder saxBuilder = new SAXBuilder();
         File xml_file = new File(path_XML);
         //Probably we catch an exception
         try{
-            
             System.out.println("Try clause");
             XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
             Document document = saxBuilder.build(xml_file);
@@ -468,7 +468,8 @@ public class LoginValidator {
                     for(int j = 0; j  < projects.size(); j++){
                         Element project = (Element)projects.get(j);
                         if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
-                            ((Element)(projects.get(j))).removeContent();
+                            project.getChild(JSON).setText(JSON_value);
+                            project.getChild(RTF).setText(RTF_value);
                             System.out.println("Project found");
                             xmlOutputter.output(document, new FileOutputStream(xml_file));
                             return;

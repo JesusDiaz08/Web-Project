@@ -23,7 +23,7 @@ public class ServletSessionModifyDiagram extends HttpServlet {
         session.setAttribute(JSON, JSON_str);
         System.out.println(RTF_str);
         session.setAttribute(RTF, RTF_str);
-        response.sendRedirect("ServletModifyDiagramTeacher");
+        response.sendRedirect("ServletUpdateDiagramTeacher");
     }
 
 }
