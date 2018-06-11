@@ -38,8 +38,12 @@
 }
 
 #evalue{
-    top: 200px;
+    top: 230px;
     background-color: #555
+}
+#asign{
+    top:280px;
+    background-color: #4DB82C
 }
 
 /*APARTADO DEL ALUMNO*/
