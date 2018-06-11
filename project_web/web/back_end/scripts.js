@@ -2,6 +2,10 @@
 
     'use strict';
 
+    $("#btnAdd").click(function(){
+        pop_ventana = window.open('registro.html','Registrar usuario','width=400,height=650');
+        getActivities();
+    });
 
     function fillTable(users) {
         $("#table > tbody").empty();
@@ -70,6 +74,7 @@
             });
         });
     }
+    
     getActivities();
 
 })(jQuery);
