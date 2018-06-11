@@ -326,14 +326,51 @@ public class LoginValidator {
         return null;
     }
     
-    public void isRTF_saved(String RTF, String user){
-        System.out.println("User actual: "+user);
-        System.out.println("My RTF is: ");
-        System.out.println("->"+RTF);
+    public void isRTF_saved(String RTF_value, String JSON_value, String user, String project_name){
+        System.out.println("OurServlets.LoginValidator.isRTF_saved() RTF = [" + RTF + "]"
+                + " JSON = [" + JSON + "] user = [" + user + "]");
+        //Probably we catch an exception
+        try{
+            //First of all we need to find the user that has created the diagram
+            Element user_element = getUser(user);
+            Element user_projects = user_element.getChild(PROJECTS);
+            //We create a new node that contains information about the project
+            Element project = new Element(PROJECT);
+            //Project name
+            Element RTF_ELEMENT = new Element(RTF).addContent(RTF_value);
+            Element JSON_ELEMENT = new Element(JSON).addContent(JSON_value);
+            Attribute name_project = new Attribute(ATTR_NAME_PROJECT, project_name);
+            project.addContent(RTF_ELEMENT);
+            project.addContent(JSON_ELEMENT);
+            project.setAttribute(name_project);
+            user_projects.addContent(project);      
+        } catch(Exception e) {
+            System.err.println("An exception has occurred in LoginValidator.isRTF_saved() " + e);
+        }
     }
     
-    public void isJSON_saved(){
-        
+    public Element getProject(String project_name, String user_name){
+        System.out.println("OurServlets.LoginValidator.getProject() project_name = ["+ project_name+"] "
+                + " user_name = [" + user_name + "]");
+        //Probably we cath an exception
+        try{
+            //We get the user information
+            Element user_element = getUser(user_name);
+            //Now we need to get the info in an specific project
+            List projects = user_element.getChild(PROJECTS).getChildren(PROJECT);
+            for(int i = 0; i < projects.size(); i++){
+                //We get each element
+                Element project = (Element)projects.get(i);
+                //We compare the name of the element
+                if(project.getChild(ATTR_NAME_PROJECT).equals(project_name)){
+                    //If the project exits we can return the data
+                    return project;
+                }
+            }
+        }catch(Exception e){
+            System.err.println("An exception has occurred in LoginValidator.getProject() " + e);
+        }
+        return null;
     }
 
 }

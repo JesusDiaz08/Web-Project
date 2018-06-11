@@ -136,7 +136,7 @@ public class Servlet_Diagram extends HttpServlet {
        String imagen=request.getParameter("img");
         System.out.println("Imagen:"+imagen);
         
-        validate.isRTF_saved(texto,actualUser);/*Se va a recuperar el texto enriquecido para agregarlo al xml*/
+       //validate.isRTF_saved(texto,actualUser);/*Se va a recuperar el texto enriquecido para agregarlo al xml*/
        
        PrintWriter pw=response.getWriter();
        pw.println("<!DOCTYPE html>");
