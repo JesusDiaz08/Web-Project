@@ -407,5 +407,30 @@ public class LoginValidator {
         }
         return null;
     }
+    
+    public void dropProject(String user, String project_name){
+        System.out.println("OurServlets.LoginValidator.dropProject() user = [" + user + "] "
+                + " project_name = [" + project_name + "]");
+        SAXBuilder saxBuilder = new SAXBuilder();
+        File xml_file = new File(path_XML);
+        //Probably we catch an exception
+        try{
+            XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+            Document document = saxBuilder.build(xml_file);
+            Element root = document.getRootElement();
+            Element element_projects = root.getChild(PROJECTS);
+            List projects = element_projects.getChildren();
+            for(int i = 0; i < projects.size(); i++){
+                Element project = (Element)projects.get(i);
+                if(project.getAttributeValue(ATTR_NAME_PROJECT).equals(project_name)){
+                    System.out.println("I've found the project " + project_name);
+                    projects.remove(i);
+                    xmlOutputter.output(document, new FileOutputStream(xml_file));
+                }
+            }
+        } catch(Exception e){
+            System.err.println("An exception has occurred in LoginValidator.dropProject" + e);
+        }
+    }
 
 }
