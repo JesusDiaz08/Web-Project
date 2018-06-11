@@ -128,6 +128,7 @@ public class LoginValidator {
                 if (user_element.getAttributeValue(ATTR_EMAIL).equals(id)
                         || // the user_name is the same as the @param so we return an Element
                         user_element.getAttributeValue(ATTR_USER_NAME).equals(id)) {
+                    System.out.println("I've found: " + id);
                     //User found, we return the user
                     return user_element;
                 }
@@ -326,13 +327,26 @@ public class LoginValidator {
         return null;
     }
     
-    public void isRTF_saved(String RTF_value, String JSON_value, String user, String project_name){
+    public void addProject(String RTF_value, String JSON_value, String user, String project_name){
         System.out.println("OurServlets.LoginValidator.isRTF_saved() RTF = [" + RTF + "]"
                 + " JSON = [" + JSON + "] user = [" + user + "]");
         //Probably we catch an exception
+        SAXBuilder saxBuilder = new SAXBuilder();
+        File file = new File(path_XML);
         try{
+            XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
+            Document document = saxBuilder.build(file);
             //First of all we need to find the user that has created the diagram
-            Element user_element = getUser(user);
+            //Element user_element = getUser(user);
+            List elements = document.getRootElement().getChildren();
+            Element user_element = null;
+            for(int i = 0; i < elements.size(); i++){
+                user_element = (Element)elements.get(i);
+                if(user_element.getAttributeValue(ATTR_EMAIL).equals(user)){
+                    System.out.println("I've found " + user);
+                    break;
+                }
+            }
             Element user_projects = user_element.getChild(PROJECTS);
             //We create a new node that contains information about the project
             Element project = new Element(PROJECT);
@@ -343,9 +357,15 @@ public class LoginValidator {
             project.addContent(RTF_ELEMENT);
             project.addContent(JSON_ELEMENT);
             project.setAttribute(name_project);
-            user_projects.addContent(project);      
+            user_projects.addContent(project);   
+            System.out.println(((Element)user_projects.getChildren(PROJECT).get(0)).getAttribute(ATTR_NAME_PROJECT));
+            //user_element.addContent(user_projects);
+            
+            
+            xmlOutputter.output(document, new FileOutputStream(file));
+            
         } catch(Exception e) {
-            System.err.println("An exception has occurred in LoginValidator.isRTF_saved() " + e);
+            System.err.println("An exception has occurred in LoginValidator.addProject() " + e);
         }
     }
     

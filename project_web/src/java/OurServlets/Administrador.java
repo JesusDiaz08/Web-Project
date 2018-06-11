@@ -30,11 +30,13 @@ public class Administrador extends HttpServlet {
         
         ServletContext context = request.getServletContext();
         String path = context.getRealPath("/xml_code/storage.xml");
+        path = path.replace("\\build\\", "\\");
         System.out.println(path);
+        LoginValidator validator = new LoginValidator(path);
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        String userName = (String)session.getAttribute("attr_user");
-            
+        String userName = "erick_thod@hotmail.com";//(String)session.getAttribute("attr_user");
+        validator.addProject("rvwe1rvw224", "{}{}{}{}[][]{}{]{}", userName, "myFirstProject");
         out.println("<!DOCTYPE html>");
         out.println("<html>");
             out.println("<head>");
