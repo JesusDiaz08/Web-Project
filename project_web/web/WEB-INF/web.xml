@@ -124,6 +124,10 @@
         <servlet-name>ServletModifyDiagramTeacher</servlet-name>
         <servlet-class>OurServlets.ServletModifyDiagramTeacher</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletSessionModifyDiagram</servlet-name>
+        <servlet-class>OurServlets.ServletSessionModifyDiagram</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet_login</servlet-name>
         <url-pattern>/Servlet_login</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>ServletModifyDiagramTeacher</servlet-name>
         <url-pattern>/ServletModifyDiagramTeacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSessionModifyDiagram</servlet-name>
+        <url-pattern>/ServletSessionModifyDiagram</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

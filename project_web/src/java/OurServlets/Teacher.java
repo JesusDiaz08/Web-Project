@@ -50,7 +50,7 @@ public class Teacher extends HttpServlet {
                     out.println("<a href='back_end/teacher_activity.html' id='createDiagram'>Crear diagrama</a>");
                 out.println("</div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
-                    out.println("<a href='back_end/teacher_asign.html' id='asign'>Asignar</a>");
+                    out.println("<a href='back_end/teacher_asign.html' id='asign'>Subir multimedia</a>");
                 out.println("</div>");
                 out.println("<div id='mySidenav' class='sidenav'>");
                     out.println("<a href='back_end/teacher_activity.html' id='evalue'>Evaluar</a>");
