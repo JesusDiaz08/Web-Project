@@ -60,7 +60,6 @@ public class Servlet_get_text extends HttpServlet {
         System.out.println("|---------");
         System.out.println("| Sesion actual: "+actual_user);
         System.out.println("|---------");
-        session.setAttribute("num_elementos", String.valueOf(n));
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
