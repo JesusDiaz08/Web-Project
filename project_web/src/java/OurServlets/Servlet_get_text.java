@@ -17,6 +17,7 @@ public class Servlet_get_text extends HttpServlet {
         PrintWriter out = response.getWriter();
         Integer n=Integer.parseInt(request.getParameter("num_elementos"));
         String texto=request.getParameter("txt-content");
+        String nombre=request.getParameter("project_name");
         HttpSession session = request.getSession();
         String actual_user = String.valueOf(session.getAttribute("repo_teacher"));
         
@@ -24,6 +25,7 @@ public class Servlet_get_text extends HttpServlet {
         session.setAttribute("num_elementos", String.valueOf(n));/*Numero de elementos*/
         session.setAttribute("texto",texto);
         session.setAttribute("actualUser",actual_user);
+        session.setAttribute("project_name",nombre);
         /*----------------------------------------------------------*/
         System.out.println("|---------");
         System.out.println("| Sesion actual: "+actual_user);
