@@ -340,7 +340,7 @@ public class LoginValidator {
             //Element user_element = getUser(user);
             List elements = document.getRootElement().getChildren();
             Element user_element = null;
-            for(int i = 0; i < elements.size(); i++){
+            for(int i = 0; i < elements.size(); i++){   
                 user_element = (Element)elements.get(i);
                 if(user_element.getAttributeValue(ATTR_EMAIL).equals(user)){
                     System.out.println("I've found " + user);

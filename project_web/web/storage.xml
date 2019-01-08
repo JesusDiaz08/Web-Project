@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="storage.xsd">
   <user type_user="administrator" id_email="erick_thod@hotmail.com" id_user="eerick1997">
-    <name>Erick</name>
+    <name>Efrain</name>
     <last_name>Vargas</last_name>
     <password>eerick1997977</password>
-    <projects />
+    <projects>
+      <project nameProject="Proyecto01">
+        <JSON>{a:ef}{a:ce}{q:ve}</JSON>
+        <RTF>fvrw13rwcvr2r4fas</RTF>
+      </project>
+    </projects>
   </user>
   <user type_user="administrator" id_email="jesuskai@gmail.com" id_user="Kaimorts">
     <name>Jesus</name>
@@ -27,6 +32,25 @@
     <last_name>Moreno</last_name>
     <password>jdsjdsnjsd</password>
     <projects>algo</projects>
+  </user>
+  <user type_user="teacher" id_email="ruben.peredo@gmail.com" id_user="Pruben">
+    <name>Ruben</name>
+    <last_name>Peredo</last_name>
+    <password>1234</password>
+    <projects>
+      <project nameProject="MiProyecto">
+        <RTF>Hola mundo&lt;br&gt;</RTF>
+        <JSON>{"attrs":{"width":1536,"height":750},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":10,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":10,"y":200,"draggable":true},"className":"Group","children":[{"attrs":{"x":10,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":20,"y":210,"fill":"white","text":"Hola"},"className":"Text"}]},{"attrs":{"x":260,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":260,"y":200,"draggable":true},"className":"Group","children":[{"attrs":{"x":260,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":270,"y":210,"fill":"white","text":"Mundo"},"className":"Text"}]},{"attrs":{"x":500,"y":50,"width":106,"height":118},"className":"Image"}]}]}</JSON>
+      </project>
+      <project nameProject="RFWPKP">
+        <RTF>EOIEWI</RTF>
+        <JSON>{"attrs":{"width":1536,"height":758},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":10,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":22,"y":385,"draggable":true},"className":"Group","children":[{"attrs":{"x":10,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":20,"y":210,"fill":"white","text":"EFEWQ"},"className":"Text"}]},{"attrs":{"x":260,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":5,"y":385,"draggable":true},"className":"Group","children":[{"attrs":{"x":260,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":270,"y":210,"fill":"white","text":"EFW"},"className":"Text"}]},{"attrs":{"x":500,"y":50,"width":106,"height":118},"className":"Image"}]}]}</JSON>
+      </project>
+      <project nameProject="fdxfdxg">
+        <RTF>jtfhtfh</RTF>
+        <JSON>{"attrs":{"width":1536,"height":758},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":10,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":2,"y":401,"draggable":true},"className":"Group","children":[{"attrs":{"x":10,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":20,"y":210,"fill":"white","text":"gfcgc"},"className":"Text"}]},{"attrs":{"x":260,"y":600,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#e0fcfc","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":1,"y":399,"draggable":true},"className":"Group","children":[{"attrs":{"x":260,"y":200,"offset0":50,"offset1":25,"width":200,"height":100,"fill":"#0098FF","stroke":"black","strokeWidth":4},"className":"Rect"},{"attrs":{"x":270,"y":210,"fill":"white","text":"gfcfchf"},"className":"Text"}]},{"attrs":{"x":500,"y":50,"width":106,"height":118},"className":"Image"}]}]}</JSON>
+      </project>
+    </projects>
   </user>
 </users>
 
